@@ -74,102 +74,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. VALUE PROPOSITION / FEATURES SECTION */}
-      <section className="w-full bg-surface-container-lowest py-12 lg:py-16 border-y border-surface-container">
-        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
-              Painless Modern Care
-            </span>
-            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
-              Thoughtful Dental Care, Designed Around You.
-            </h2>
-            <p className="text-sm text-secondary mt-2">
-              We reject intimidating, cluttered clinic setups in favor of an airy, welcoming studio environment focused on your comfort and peace of mind.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            <div className="bg-surface rounded-2xl p-6 border border-surface-container hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                <span className="material-symbols-outlined text-[28px]">sanitizer</span>
-              </div>
-              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
-                Sterilized Operatories
-              </h3>
-              <p className="text-xs text-secondary leading-relaxed">
-                Every single instrument undergoes rigid autoclave sterilization under hospital Class-B standards, sealed in tamper-evident pouches opened directly in your presence.
-              </p>
-            </div>
-
-            <div className="bg-surface rounded-2xl p-6 border border-surface-container hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                <span className="material-symbols-outlined text-[28px]">radiology</span>
-              </div>
-              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
-                Digital Radiography
-              </h3>
-              <p className="text-xs text-secondary leading-relaxed">
-                Ultra-low radiation chairside digital sensors capture crystal-clear dental anatomy instantaneously, displayed on high-definition patient monitors for complete clarity.
-              </p>
-            </div>
-
-            <div className="bg-surface rounded-2xl p-6 border border-surface-container hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                <span className="material-symbols-outlined text-[28px]">handshake</span>
-              </div>
-              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
-                Transparent Consultations
-              </h3>
-              <p className="text-xs text-secondary leading-relaxed">
-                No hidden costs or unnecessary procedures. You receive a structured, step-by-step treatment plan with transparent timeline and pricing before any treatment begins.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. CLINICAL SERVICES MATRIX */}
-      <section id="treatments-section" className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-          <div>
-            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface">
-              Dental Treatments & Services
-            </h2>
-          </div>
-          <Link
-            to="/treatments"
-            className="inline-flex items-center gap-1 text-sm font-bold text-primary hover:underline shrink-0"
-          >
-            <span>Explore All Treatments</span>
-            <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service) => (
-            <Link
-              to="/treatments"
-              key={service.id}
-              className="bg-white rounded-2xl p-5 border border-surface-container hover:border-primary/50 hover:shadow-md transition-all duration-300 flex items-center justify-between group"
-            >
-              <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-surface-container-low text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
-                  <span className="material-symbols-outlined text-[22px]">{service.icon}</span>
-                </div>
-                <h3 className="font-headline font-bold text-base sm:text-lg text-on-surface group-hover:text-primary transition-colors">
-                  {service.name}
-                </h3>
-              </div>
-              <span className="material-symbols-outlined text-secondary/50 group-hover:text-primary group-hover:translate-x-1 transition-all text-[18px]">
-                arrow_forward
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. MEET YOUR DENTAL CARE EXPERTS (Dr. Bhanuja & Dr. Madhuri) */}
+      {/* 2. MEET YOUR DENTAL CARE EXPERTS (Dr. Bhanuja & Dr. Madhuri) */}
       <section id="doctors-section" className="w-full bg-surface-container-low py-12 lg:py-16 border-y border-surface-container">
         <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
@@ -248,6 +153,101 @@ export const HomePage: React.FC = () => {
               <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* 3. VALUE PROPOSITION / FEATURES SECTION */}
+      <section className="w-full bg-white py-12 lg:py-16 border-b border-surface-container">
+        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
+              Painless Modern Care
+            </span>
+            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
+              Thoughtful Dental Care, Designed Around You.
+            </h2>
+            <p className="text-sm text-secondary mt-2">
+              We reject intimidating, cluttered clinic setups in favor of an airy, welcoming studio environment focused on your comfort and peace of mind.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <div className="bg-surface-container-lowest rounded-2xl p-6 border border-surface-container hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+                <span className="material-symbols-outlined text-[28px]">sanitizer</span>
+              </div>
+              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
+                Sterilized Operatories
+              </h3>
+              <p className="text-xs text-secondary leading-relaxed">
+                Every single instrument undergoes rigid autoclave sterilization under hospital Class-B standards, sealed in tamper-evident pouches opened directly in your presence.
+              </p>
+            </div>
+
+            <div className="bg-surface-container-lowest rounded-2xl p-6 border border-surface-container hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+                <span className="material-symbols-outlined text-[28px]">radiology</span>
+              </div>
+              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
+                Digital Radiography
+              </h3>
+              <p className="text-xs text-secondary leading-relaxed">
+                Ultra-low radiation chairside digital sensors capture crystal-clear dental anatomy instantaneously, displayed on high-definition patient monitors for complete clarity.
+              </p>
+            </div>
+
+            <div className="bg-surface-container-lowest rounded-2xl p-6 border border-surface-container hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+                <span className="material-symbols-outlined text-[28px]">handshake</span>
+              </div>
+              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
+                Transparent Consultations
+              </h3>
+              <p className="text-xs text-secondary leading-relaxed">
+                No hidden costs or unnecessary procedures. You receive a structured, step-by-step treatment plan with transparent timeline and pricing before any treatment begins.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. CLINICAL SERVICES MATRIX */}
+      <section id="treatments-section" className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface">
+              Dental Treatments & Services
+            </h2>
+          </div>
+          <Link
+            to="/treatments"
+            className="inline-flex items-center gap-1 text-sm font-bold text-primary hover:underline shrink-0"
+          >
+            <span>Explore All Treatments</span>
+            <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service) => (
+            <Link
+              to="/treatments"
+              key={service.id}
+              className="bg-white rounded-2xl p-5 border border-surface-container hover:border-primary/50 hover:shadow-md transition-all duration-300 flex items-center justify-between group"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-surface-container-low text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
+                  <span className="material-symbols-outlined text-[22px]">{service.icon}</span>
+                </div>
+                <h3 className="font-headline font-bold text-base sm:text-lg text-on-surface group-hover:text-primary transition-colors">
+                  {service.name}
+                </h3>
+              </div>
+              <span className="material-symbols-outlined text-secondary/50 group-hover:text-primary group-hover:translate-x-1 transition-all text-[18px]">
+                arrow_forward
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
 
