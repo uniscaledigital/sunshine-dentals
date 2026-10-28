@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { doctors, services, clinicInfo } from '../config/clinicData';
-import { AppointmentForm } from '../components/AppointmentForm';
+
 
 export const DoctorBhanujaPage: React.FC = () => {
   const doctor = doctors.find((d) => d.id === 'bhanuja')!;
@@ -63,13 +63,7 @@ export const DoctorBhanujaPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Quote */}
-          <div className="bg-surface-container-low border-l-4 border-primary rounded-r-2xl p-5 italic text-sm text-on-surface leading-relaxed relative">
-            <span className="material-symbols-outlined text-primary/30 text-4xl absolute right-3 top-3 pointer-events-none">
-              format_quote
-            </span>
-            "{doctor.quote}"
-          </div>
+
 
           {/* Full Bio */}
           <div>
@@ -146,14 +140,21 @@ export const DoctorBhanujaPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-6 bg-white border-t border-surface-container">
-              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
-                Book a Direct Consultation
-              </h3>
-              <p className="text-xs text-secondary mb-4">
-                Schedule your appointment directly with Dr. Bhanuja at Sunshine Dental Clinic, Hanamkonda.
-              </p>
-              <AppointmentForm initialDoctor="bhanuja" />
+            <div className="p-6 bg-white border-t border-surface-container flex flex-col gap-3">
+              <Link
+                to={`/book-appointment?doctor=${doctor.id}`}
+                className="w-full text-center py-3.5 px-4 bg-primary hover:bg-primary-container text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+              >
+                <span className="material-symbols-outlined text-[18px]">calendar_month</span>
+                <span>Book Consultation with {doctor.name}</span>
+              </Link>
+              <a
+                href={`tel:${clinicInfo.phone}`}
+                className="w-full text-center py-3 px-4 border border-outline-variant text-on-surface hover:bg-surface-container-low font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2"
+              >
+                <span className="material-symbols-outlined text-[18px] text-primary">call</span>
+                <span>Call Clinic ({clinicInfo.phone})</span>
+              </a>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { clinicInfo, doctors, services, clinicPhotos } from '../config/clinicData';
+import { clinicInfo, doctors, services } from '../config/clinicData';
 import { AppointmentForm } from '../components/AppointmentForm';
 import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
 
@@ -67,18 +67,7 @@ export const HomePage: React.FC = () => {
               </a>
             </div>
 
-            {/* Trust Badges Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-surface-container">
-              {clinicInfo.trustBadges.map((badge, idx) => (
-                <div key={idx} className="flex flex-col gap-1 p-2">
-                  <span className="material-symbols-outlined text-primary text-[24px]">
-                    {badge.icon}
-                  </span>
-                  <p className="text-xs font-bold text-on-surface leading-tight">{badge.title}</p>
-                  <p className="text-[11px] text-secondary leading-tight">{badge.subtitle}</p>
-                </div>
-              ))}
-            </div>
+
 
           </div>
 
@@ -359,39 +348,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. MODERN CLINIC & STERILIZATION STANDARDS (Matching Stitch 4 Photo Grid) */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
-            Clinical Environment
-          </span>
-          <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
-            Modern Clinic & Sterilization Standards
-          </h2>
-          <p className="text-sm text-secondary mt-2">
-            Engineered around international sterility guidelines. Experience peaceful operatory suites, medical autoclaves, and low-radiation digital imaging.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          {clinicPhotos.map((photo, i) => (
-            <div
-              key={i}
-              className="group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[3/4] bg-surface-container shadow-md"
-            >
-              <img
-                src={photo.image}
-                alt={photo.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 flex flex-col justify-end text-white">
-                <p className="font-headline font-bold text-sm leading-snug">{photo.title}</p>
-                <p className="text-[11px] text-white/80 line-clamp-2 mt-1">{photo.subtitle}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* 7. SCHEDULE YOUR VISIT ONLINE (Embedded Appointment Form) */}
       <section id="appointment-booking" className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
