@@ -127,14 +127,8 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Legal Bar */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/70">
+        <div className="mt-12 pt-6 border-t border-white/10 text-center text-xs text-white/70">
           <p>© {new Date().getFullYear()} Sunshine Dental Clinic. All rights reserved. Hanamkonda, Telangana.</p>
-          <div className="flex items-center gap-6">
-            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-white transition-colors">Terms of Care</Link>
-            <span className="hidden sm:inline">|</span>
-            <span className="text-[11px] text-white/60">Reg: TS-DENT-8419 & TS-DDC-8492</span>
-          </div>
         </div>
 
       </div>
