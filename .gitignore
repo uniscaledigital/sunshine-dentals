@@ -1,0 +1,32 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependencies and build outputs
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Editor directories
+.vscode/
+.idea/
+.DS_Store
+
+# Sensitive files and tokens (protect GitHub / Stitch tokens from auto-revocation)
+AGENTS.md
+.agents/
+.env
+.env.*
+
+# Temporary extraction assets
+stitch_extracted/
+extracted_logo/
+download_*.py
+analyze_*.py
+inspect_*.py
+organize_*.py
