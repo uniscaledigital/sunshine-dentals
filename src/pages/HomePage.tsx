@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { clinicInfo, doctors, services, googleReviews } from '../config/clinicData';
 import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
+import { InstagramReelsSection } from '../components/InstagramReelsSection';
 
 export const HomePage: React.FC = () => {
   return (
@@ -331,6 +332,9 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* 7. FOLLOW OUR SMILE JOURNEY (INSTAGRAM REELS) */}
+      <InstagramReelsSection />
 
 
       {/* 8. VISIT SUNSHINE DENTAL / MAP & LOCATION */}
