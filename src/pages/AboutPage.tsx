@@ -109,7 +109,7 @@ export const AboutPage: React.FC = () => {
 
       {/* Bottom CTA Banner */}
       <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 pb-8">
-        <div className="teal-gradient rounded-3xl p-8 lg:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="brand-gradient rounded-3xl p-8 lg:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div>
             <h2 className="font-headline text-2xl sm:text-3xl font-bold">
               Ready to Experience Gentle Dental Care?

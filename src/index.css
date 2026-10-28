@@ -6,14 +6,15 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #131b2e;
-    background-color: #faf8ff;
+    color: #26160d;
+    background-color: #fcfaf8;
   }
 
   body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #fcfaf8;
   }
 
   h1, h2, h3, h4, .font-headline {
@@ -44,8 +45,8 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
-.teal-gradient {
-  background: linear-gradient(135deg, #006261 0%, #087d7c 100%);
+.teal-gradient, .brand-gradient {
+  background: linear-gradient(135deg, #391f13 0%, #572f1d 100%);
 }
 
 .amber-gradient {

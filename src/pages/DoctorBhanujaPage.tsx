@@ -143,9 +143,9 @@ export const DoctorBhanujaPage: React.FC = () => {
             <div className="p-6 bg-white border-t border-surface-container">
               <a
                 href={`tel:${clinicInfo.phone}`}
-                className="w-full text-center py-3 px-4 bg-surface hover:bg-surface-container-low border border-outline-variant text-on-surface font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2"
+                className="w-full text-center py-3.5 px-4 bg-primary hover:bg-primary-container text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
               >
-                <span className="material-symbols-outlined text-[18px] text-primary">call</span>
+                <span className="material-symbols-outlined text-[18px]">call</span>
                 <span>Call Clinic ({clinicInfo.phone})</span>
               </a>
             </div>

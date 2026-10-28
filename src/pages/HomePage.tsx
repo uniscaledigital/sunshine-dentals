@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { clinicInfo, doctors, services } from '../config/clinicData';
-import { AppointmentForm } from '../components/AppointmentForm';
 import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
 
 export const HomePage: React.FC = () => {
@@ -156,60 +155,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. VALUE PROPOSITION / FEATURES SECTION */}
-      <section className="w-full bg-white py-12 lg:py-16 border-b border-surface-container">
-        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
-              Painless Modern Care
-            </span>
-            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
-              Thoughtful Dental Care, Designed Around You.
-            </h2>
-            <p className="text-sm text-secondary mt-2">
-              We reject intimidating, cluttered clinic setups in favor of an airy, welcoming studio environment focused on your comfort and peace of mind.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            <div className="bg-surface-container-lowest rounded-2xl p-6 border border-surface-container hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                <span className="material-symbols-outlined text-[28px]">sanitizer</span>
-              </div>
-              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
-                Sterilized Operatories
-              </h3>
-              <p className="text-xs text-secondary leading-relaxed">
-                Every single instrument undergoes rigid autoclave sterilization under hospital Class-B standards, sealed in tamper-evident pouches opened directly in your presence.
-              </p>
-            </div>
-
-            <div className="bg-surface-container-lowest rounded-2xl p-6 border border-surface-container hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                <span className="material-symbols-outlined text-[28px]">radiology</span>
-              </div>
-              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
-                Digital Radiography
-              </h3>
-              <p className="text-xs text-secondary leading-relaxed">
-                Ultra-low radiation chairside digital sensors capture crystal-clear dental anatomy instantaneously, displayed on high-definition patient monitors for complete clarity.
-              </p>
-            </div>
-
-            <div className="bg-surface-container-lowest rounded-2xl p-6 border border-surface-container hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                <span className="material-symbols-outlined text-[28px]">handshake</span>
-              </div>
-              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
-                Transparent Consultations
-              </h3>
-              <p className="text-xs text-secondary leading-relaxed">
-                No hidden costs or unnecessary procedures. You receive a structured, step-by-step treatment plan with transparent timeline and pricing before any treatment begins.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 4. CLINICAL SERVICES MATRIX */}
       <section id="treatments-section" className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
@@ -265,7 +211,8 @@ export const HomePage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        {/* Centered Image Comparison */}
+        <div className="max-w-3xl mx-auto">
           <BeforeAfterSlider
             beforeImage="/images/clinical/case-5-orthodontic-crowding-before.jpg"
             afterImage="/images/clinical/case-5-orthodontic-crowding-after.jpg"
@@ -275,117 +222,66 @@ export const HomePage: React.FC = () => {
             afterLabel="After Clear Aligners"
           />
 
-          <div className="flex flex-col gap-6">
-            <div className="bg-white rounded-2xl p-6 border border-surface-container shadow-sm">
-              <div className="flex items-center gap-1 text-amber-500 mb-2">
+          {/* Redirect to full clinical gallery */}
+          <div className="text-center mt-6">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center gap-2 text-sm font-bold text-white bg-primary hover:bg-primary-container px-6 py-3 rounded-full transition-all shadow-md"
+            >
+              <span>View Full Clinical Smile Gallery (6 Cases)</span>
+              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* 6. OUR HAPPY CLIENTS & CENTERED REVIEWS */}
+        <div className="mt-16 pt-12 border-t border-surface-container">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
+              Patient Testimonials
+            </span>
+            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
+              Our Happy Clients
+            </h2>
+            <p className="text-sm text-secondary mt-2">
+              Real feedback from patients treated with gentle precision at Sunshine Dental Clinic.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-surface-container shadow-md text-center flex flex-col items-center justify-between">
+              <div className="flex items-center justify-center gap-1 text-amber-500 mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="material-symbols-outlined text-[20px] fill-current">star</span>
+                  <span key={i} className="material-symbols-outlined text-[22px] fill-current">star</span>
                 ))}
-                <span className="text-xs font-bold text-on-surface ml-2">5.0 Star Patient Rating</span>
               </div>
-              <p className="text-sm text-on-surface italic leading-relaxed">
+              <p className="text-sm sm:text-base text-on-surface italic leading-relaxed mb-4">
                 "I was terrified of getting a root canal due to previous painful experiences. Dr. Madhuri completely changed my perspective! The single-sitting procedure was 100% painless and smooth. Best clinic in Hanamkonda."
               </p>
-              <p className="text-xs font-bold text-primary mt-3">— S. Vardhan, Google Verified Patient</p>
+              <div>
+                <p className="font-bold text-sm text-on-surface">S. Vardhan</p>
+                <p className="text-xs text-primary font-semibold mt-0.5">Google Verified Patient • Root Canal Treatment</p>
+              </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 border border-surface-container shadow-sm">
-              <div className="flex items-center gap-1 text-amber-500 mb-2">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-surface-container shadow-md text-center flex flex-col items-center justify-between">
+              <div className="flex items-center justify-center gap-1 text-amber-500 mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="material-symbols-outlined text-[20px] fill-current">star</span>
+                  <span key={i} className="material-symbols-outlined text-[22px] fill-current">star</span>
                 ))}
-                <span className="text-xs font-bold text-on-surface ml-2">5.0 Star Patient Rating</span>
               </div>
-              <p className="text-sm text-on-surface italic leading-relaxed">
+              <p className="text-sm sm:text-base text-on-surface italic leading-relaxed mb-4">
                 "Dr. Bhanuja extracted my impacted wisdom tooth without any pain. Her reassurance and gentle technique made all the anxiety vanish. Highly sterile equipment and clear instructions for recovery."
               </p>
-              <p className="text-xs font-bold text-primary mt-3">— Priyanka M., Hanamkonda</p>
-            </div>
-
-            <div className="text-center sm:text-left">
-              <Link
-                to="/gallery"
-                className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
-              >
-                <span>View Full Clinical Smile Gallery (6 Cases)</span>
-                <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-              </Link>
+              <div>
+                <p className="font-bold text-sm text-on-surface">Priyanka M.</p>
+                <p className="text-xs text-primary font-semibold mt-0.5">Hanamkonda Resident • Wisdom Tooth Surgery</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-
-
-      {/* 7. SCHEDULE YOUR VISIT ONLINE (Embedded Appointment Form) */}
-      <section id="appointment-booking" className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
-        <div className="teal-gradient rounded-3xl p-6 sm:p-10 lg:p-14 text-white shadow-2xl relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
-            {/* Left Column: Context & Guarantees */}
-            <div className="lg:col-span-5 flex flex-col gap-6">
-              <span className="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full w-fit">
-                Instant OPD Booking
-              </span>
-              <h2 className="font-headline text-3xl sm:text-4xl font-extrabold leading-tight">
-                Schedule Your Visit Online
-              </h2>
-              <p className="text-sm sm:text-base text-white/90 leading-relaxed">
-                Take the first step toward a healthier, more confident smile. Select your preferred date, time, and dental specialist. Our care team will confirm your slot immediately.
-              </p>
-
-              <div className="space-y-4 pt-2">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="material-symbols-outlined text-[18px]">lock_reset</span>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold">1-Day Healing & Zero Pain Care</p>
-                    <p className="text-[11px] text-white/80">Gentle treatment mapped around your comfort.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="material-symbols-outlined text-[18px]">verified</span>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold">Single Location in Hanamkonda</p>
-                    <p className="text-[11px] text-white/80">Centrally located with convenient parking.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="material-symbols-outlined text-[18px]">chat</span>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold">Direct WhatsApp Confirmation</p>
-                    <p className="text-[11px] text-white/80">Automated slot reminder and directions sent straight to your phone.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <p className="text-xs text-white/80">Need instant emergency relief right now?</p>
-                <a
-                  href={`tel:${clinicInfo.phone}`}
-                  className="inline-flex items-center gap-1.5 text-sm font-bold text-white hover:underline mt-1"
-                >
-                  <span className="material-symbols-outlined text-[18px]">call</span>
-                  Direct Emergency Line: {clinicInfo.phone}
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Appointment Form */}
-            <div className="lg:col-span-7">
-              <AppointmentForm />
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* 8. VISIT SUNSHINE DENTAL / MAP & LOCATION */}
       <section className="w-full bg-surface-container-low py-12 lg:py-16 border-t border-surface-container">
