@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { clinicInfo } from '../config/clinicData';
 
 interface AppointmentFormProps {
@@ -36,17 +35,21 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
   initialDoctor = '',
   className = ''
 }) => {
-  const navigate = useNavigate();
-
-  // Find matching initial treatment option
-  const defaultTreatment = treatmentOptions.some(t => t.id === initialTreatment)
-    ? initialTreatment
-    : (treatmentOptions.find(t => t.label.toLowerCase().includes(initialTreatment.toLowerCase()))?.id || '');
+  // Helper to format date as DD-MM-YYYY
+  const formatPreferredDate = (dateStr: string): string => {
+    if (!dateStr) return '';
+    const parts = dateStr.split('-');
+    if (parts.length === 3) {
+      const [year, month, day] = parts;
+      return `${day}-${month}-${year}`;
+    }
+    return dateStr;
+  };
 
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
-    treatment: defaultTreatment || 'tooth-pain',
+    treatment: initialTreatment || 'tooth-pain',
     preferredDoctor: initialDoctor || 'any',
     preferredDate: '',
     preferredTime: '10:30 AM',
@@ -55,6 +58,8 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [whatsappError, setWhatsappError] = useState<string | null>(null);
+  const [whatsappOpened, setWhatsappOpened] = useState<string | null>(null);
 
   // Prevent past dates: get today in YYYY-MM-DD format
   const todayStr = new Date().toISOString().split('T')[0];
@@ -89,17 +94,59 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setWhatsappError(null);
+    setWhatsappOpened(null);
 
-    // Simulate reliable submission and dispatch to booking confirmation page
-    setTimeout(() => {
-      setIsSubmitting(false);
-      // Persist latest booking details to session storage for confirmation page
-      sessionStorage.setItem('lastBookingRequest', JSON.stringify({
-        ...formData,
-        submittedAt: new Date().toISOString()
-      }));
-      navigate('/booking-confirmation');
-    }, 700);
+    const patientName = formData.fullName.trim();
+    const phoneNumber = formData.phone.trim();
+    const selectedTreatment = treatmentOptions.find(t => t.id === formData.treatment)?.label || formData.treatment;
+
+    let doctorName = 'First Available Doctor';
+    if (formData.preferredDoctor === 'bhanuja') {
+      doctorName = 'Dr. Bhanuja';
+    } else if (formData.preferredDoctor === 'madhuri') {
+      doctorName = 'Dr. Madhuri';
+    }
+
+    const formattedDate = formatPreferredDate(formData.preferredDate);
+    const preferredTime = formData.preferredTime;
+
+    const message = [
+      'Hello Sunshine Dental Clinic,',
+      '',
+      'I would like to request a dental appointment.',
+      '',
+      'APPOINTMENT DETAILS',
+      '------------------------------',
+      `Patient Name: ${patientName}`,
+      `Phone Number: ${phoneNumber}`,
+      `Treatment / Concern: ${selectedTreatment}`,
+      `Consulting Specialist: ${doctorName}`,
+      `Preferred Date: ${formattedDate}`,
+      `Preferred Time: ${preferredTime}`,
+      '',
+      'Please confirm my appointment availability.',
+      '',
+      'Thank you.'
+    ].join('\n');
+
+    const cleanNumber = clinicInfo.whatsapp.replace(/[^0-9]/g, '');
+    const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
+
+    try {
+      const opened = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      if (!opened || opened.closed || typeof opened.closed === 'undefined') {
+        setWhatsappError(whatsappUrl);
+      } else {
+        setWhatsappOpened(whatsappUrl);
+      }
+    } catch {
+      setWhatsappError(whatsappUrl);
+    } finally {
+      setTimeout(() => {
+        setIsSubmitting(false);
+      }, 400);
+    }
   };
 
   return (
@@ -200,7 +247,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
           {errors.treatment && <p className="text-xs text-error mt-1">{errors.treatment}</p>}
         </div>
 
-        {/* Lead Doctor Preference */}
+        {/* Consulting Specialist Preference */}
         <div>
           <label htmlFor="doctor-select" className="block text-xs font-bold text-on-surface uppercase tracking-wider mb-1.5">
             Consulting Specialist
@@ -278,13 +325,13 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 px-6 bg-primary hover:bg-primary-container text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 transform active:scale-[0.99] disabled:opacity-70"
+            className="w-full py-4 px-6 bg-primary hover:bg-primary-container text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 transform active:scale-[0.99] disabled:opacity-70 cursor-pointer"
             id="submit-booking-btn"
           >
             {isSubmitting ? (
               <>
                 <span className="animate-spin material-symbols-outlined text-[20px]">progress_activity</span>
-                <span>Submitting Consultation Request...</span>
+                <span>Opening WhatsApp...</span>
               </>
             ) : (
               <>
@@ -293,6 +340,58 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
               </>
             )}
           </button>
+
+          {/* Inline Error if WhatsApp fails to open */}
+          {whatsappError && (
+            <div
+              role="alert"
+              className="mt-3.5 p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-950 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5"
+              id="whatsapp-inline-error"
+            >
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-amber-600 text-[18px] shrink-0">
+                  warning
+                </span>
+                <span>Unable to open WhatsApp automatically (browser pop-up may be blocked).</span>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <a
+                  href={whatsappError}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-bold text-white bg-primary hover:bg-primary-container px-3 py-1.5 rounded-lg shadow-sm transition-colors text-xs"
+                  id="whatsapp-retry-link"
+                >
+                  <span>Open WhatsApp</span>
+                  <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+                </a>
+              </div>
+            </div>
+          )}
+
+          {/* Inline status when WhatsApp opened */}
+          {whatsappOpened && (
+            <div
+              className="mt-3.5 p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5"
+              id="whatsapp-opened-status"
+            >
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">
+                  check_circle
+                </span>
+                <span>WhatsApp opened with prefilled details. Please press <strong>Send</strong> in WhatsApp.</span>
+              </div>
+              <a
+                href={whatsappOpened}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 font-semibold text-emerald-800 hover:text-emerald-950 underline shrink-0"
+              >
+                <span>Reopen</span>
+                <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </form>
