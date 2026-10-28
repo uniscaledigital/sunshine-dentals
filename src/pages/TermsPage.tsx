@@ -30,7 +30,7 @@ export const TermsPage: React.FC = () => {
           <div>
             <h2 className="font-headline font-bold text-base text-on-surface mb-2">2. Single Central Location</h2>
             <p>
-              Sunshine Dental operates exclusively at its primary facility in Hanamkonda Central, Warangal Urban District, Telangana. We do not operate secondary branches or franchise kiosks.
+              Sunshine Dental operates exclusively at its primary facility above Satyam’s Diabetic Clinic at Chowrastha, Hanamkonda, Warangal, Telangana. We do not operate secondary branches or franchise kiosks.
             </p>
           </div>
 

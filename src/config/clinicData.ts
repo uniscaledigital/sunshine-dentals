@@ -3,6 +3,7 @@ export interface Doctor {
   name: string;
   role: string;
   qualification: string;
+  qualificationDescription: string;
   registrationNumber: string;
   focus: string;
   quote: string;
@@ -36,8 +37,8 @@ export const clinicInfo = {
   tagline: "Your Smile, Our Priority",
   headline: "Advanced, Painless Dental Care in Hanamkonda",
   description: "Experience modern, anxiety-free dental care with advanced hospital sterilization, digital diagnosis, and gentle specialists in Hanamkonda.",
-  address: "Hanamkonda Central, Warangal Urban District, Telangana, 506001",
-  landmark: "Near Central Circle, Main Commercial Hub",
+  address: "1st Floor, Sunshine Dental Clinic, above Satyam’s Diabetic Clinic, Ennugulagada, Raganna Darwaja, Gandhi Nagar, Chowrastha, Hanamkonda, Warangal, Telangana – 506011.",
+  landmark: "Above Satyam’s Diabetic Clinic, Ennugulagada, Raganna Darwaja, Gandhi Nagar, Chowrastha",
   phone: "+91 98765 43210",
   phoneFormatted: "+91 98765 43210",
   whatsapp: "+919876543210",
@@ -47,11 +48,12 @@ export const clinicInfo = {
     sunday: "10:00 AM – 1:30 PM (Consultation by Slot)",
     emergency: "24/7 On-Call Support for Acute Pain"
   },
-  mapUrl: "https://maps.google.com/?q=Sunshine+Dental+Clinic+Hanamkonda",
+  mapUrl: "https://www.google.com/maps/dir//1st+floor,+SUNSHINE+DENTAL+CLINIC,+above+Satyam%E2%80%99s+Diabetic+Clinic,+Ennugulagada,+Raganna+Darwaja,+Gandhi+Nagar,+Chowrastha,+Hanamkonda,+Warangal,+Telangana+506011/@18.0062914,79.5727145,15z/data=!3m1!5s0x3a33459cdbf21753:0x6843682872eb6a55!4m16!1m7!3m6!1s0x3a3345c246e700e9:0x7d5418ab93def97b!2sSUNSHINE+DENTAL+CLINIC!8m2!3d18.0062638!4d79.572622!16s%2Fg%2F11m5nvbjpf!4m7!1m0!1m5!1m1!1s0x3a3345c246e700e9:0x7d5418ab93def97b!2m2!1d79.572622!2d18.0062638?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D",
+  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15177.62923104924!2d79.57271449999999!3d18.006291400000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3345c246e700e9%3A0x7d5418ab93def97b!2sSUNSHINE%20DENTAL%20CLINIC!5e0!3m2!1sen!2sin!4v1793217617964!5m2!1sen!2sin",
   trustBadges: [
     { title: "100% Autoclaved Tools", subtitle: "Class-B Hospital Sterilization", icon: "verified" },
     { title: "Zero Pain Protocols", subtitle: "Gentle Anesthetic Administration", icon: "healing" },
-    { title: "Certified Specialists", subtitle: "Dedicated Surgical & Aesthetic Experts", icon: "medical_services" },
+    { title: "Certified Practitioners", subtitle: "Comprehensive Care for All Dental Needs", icon: "medical_services" },
     { title: "Digital Low-Dose Scans", subtitle: "Immediate Chairside Radiography", icon: "radiology" }
   ]
 };
@@ -60,38 +62,40 @@ export const doctors: Doctor[] = [
   {
     id: "bhanuja",
     name: "Dr. Bhanuja",
-    role: "Lead Dental Surgeon",
-    qualification: "BDS | Lead Dental Surgeon",
+    role: "General Dentistry & Comprehensive Dental Care",
+    qualification: "BDS, FMCD",
+    qualificationDescription: "Master's in Clinical Dentistry",
     registrationNumber: "A-6605",
-    focus: "Painless tooth extractions, conservative operative dentistry, and restorative root therapies.",
+    focus: "Comprehensive dental care for a wide range of oral health needs.",
     quote: "Dental wellness should never begin with dread. My focus is on creating a peaceful, calm clinical environment where gentle technique and clear communication remove all anxiety from your procedure.",
-    bio: "Dr. Bhanuja spearheads the primary surgical and restorative wing at Sunshine Dental Clinic, bringing comprehensive diagnostic precision and empathetic chairside reassurance to the Warangal-Hanamkonda community. With an acute understanding of dental apprehension, she has pioneered anxiety-conscious treatment protocols where patients feel thoroughly heard, educated, and comfortable prior to any clinical intervention.",
+    bio: "Dr. Bhanuja provides comprehensive dental care for a wide range of dental concerns at Sunshine Dental Clinic, helping patients find appropriate treatment for their oral health needs. With diagnostic precision and empathetic chairside reassurance, she practices anxiety-conscious dental care so that every patient feels thoroughly heard, educated, and comfortable prior to any clinical intervention.",
     image: "/images/doctors/dr-bhanuja.jpg",
     specialties: [
-      "Painless Wisdom Tooth Extractions (Gnana Dantham)",
-      "Conservative Restorative Care & Fillings",
-      "Emergency Tooth Pain Relief & Drainage",
-      "Surgical Flap & Atraumatic Tooth Removal",
-      "Post-Surgical 1-Day Recovery Planning"
+      "Painless Tooth Extractions & Wisdom Tooth Management",
+      "Conservative Restorative Care & Composite Fillings",
+      "Emergency Tooth Pain Relief & Gentle Care",
+      "Comprehensive Oral Health Examinations & Diagnostics",
+      "Preventive Dentistry & Post-Procedure Recovery Planning"
     ],
     schedule: "Mon - Sat: 10:00 AM - 04:30 PM"
   },
   {
     id: "madhuri",
     name: "Dr. Madhuri",
-    role: "Aesthetic & Endo Specialist",
-    qualification: "BDS, MDS | Aesthetic & Endodontic Specialist",
+    role: "General Dentistry & Comprehensive Dental Care",
+    qualification: "BDS, FCD",
+    qualificationDescription: "Fellowship in Clinical Dentistry",
     registrationNumber: "A-10922",
-    focus: "Smile designing, cosmetic restorations, clear aligners, and painless single-sitting endodontics.",
-    quote: "Every smile has a unique anatomical balance. By combining microscopic endodontics with precision aesthetic smile architecture, we preserve your natural teeth while achieving breathtaking aesthetic harmony.",
-    bio: "Dr. Madhuri brings advanced microscopic precision and aesthetic craftsmanship to Sunshine Dental Clinic. Recognized for her compassionate demeanor and meticulous attention to biological conservation, she leads our specialized Aesthetic & Endodontics Suite in Hanamkonda with a vision centered on natural, radiant smiles. Her masteries bridge complex root canal therapies under magnification with cutting-edge cosmetic smile makeovers.",
+    focus: "Comprehensive dental care for a wide range of oral health needs.",
+    quote: "Every smile has a unique anatomical balance. By combining precise technique with gentle care, we preserve natural teeth and help every patient achieve healthy, confident oral wellness.",
+    bio: "Dr. Madhuri provides comprehensive dental care for a wide range of dental concerns at Sunshine Dental Clinic, helping patients find appropriate treatment for their oral health needs. Recognized for her compassionate demeanor and meticulous attention to biological conservation, she works closely with patients to ensure gentle, high-quality dental care in a welcoming environment.",
     image: "/images/doctors/dr-madhuri.jpg",
     specialties: [
-      "Single-Sitting Rotary Root Canal Treatments (RCT)",
-      "Microscopic Pulp Therapy & Re-RCT",
-      "Custom Porcelain & Ceramic Veneers",
-      "Clear Aligners & Digitally Mapped Smile Design",
-      "In-Office Same-Day Laser Teeth Whitening"
+      "Endodontic & Root Canal Treatments (RCT)",
+      "Aesthetic Restorations & Tooth-Colored Fillings",
+      "Custom Porcelain Veneers & Smile Aesthetics",
+      "Clear Aligners & Malalignment Consultations",
+      "Ultrasonic Teeth Scaling & Stain Removal"
     ],
     schedule: "Mon - Sat: 02:00 PM - 08:30 PM"
   }

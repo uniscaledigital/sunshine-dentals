@@ -215,9 +215,9 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
               onChange={(e) => setFormData({ ...formData, preferredDoctor: e.target.value })}
               className="w-full pl-10 pr-10 py-3 text-base sm:text-sm rounded-xl border border-outline-variant/60 focus:border-primary outline-none focus:ring-2 focus:ring-primary/20 transition-all bg-white appearance-none"
             >
-              <option value="any">First Available Specialist</option>
-              <option value="bhanuja">Dr. Bhanuja (Lead Dental Surgeon)</option>
-              <option value="madhuri">Dr. Madhuri (Aesthetic & Endo Specialist)</option>
+              <option value="any">First Available Doctor</option>
+              <option value="bhanuja">Dr. Bhanuja (BDS, FMCD)</option>
+              <option value="madhuri">Dr. Madhuri (BDS, FCD)</option>
             </select>
             <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none text-[20px]">
               expand_more

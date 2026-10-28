@@ -79,9 +79,9 @@ export const BookingConfirmationPage: React.FC = () => {
               <span className="text-secondary">Preferred Time:</span>
               <span className="font-bold text-on-surface">{booking.preferredTime}</span>
             </div>
-            <div className="flex justify-between py-1">
-              <span className="text-secondary">Location:</span>
-              <span className="font-bold text-on-surface">Sunshine Dental, Hanamkonda Central</span>
+            <div className="flex flex-col sm:flex-row sm:justify-between py-1 gap-1">
+              <span className="text-secondary shrink-0">Location:</span>
+              <span className="font-bold text-on-surface text-left sm:text-right text-[11px] leading-tight">{clinicInfo.address}</span>
             </div>
           </div>
         )}
@@ -96,7 +96,7 @@ export const BookingConfirmationPage: React.FC = () => {
             id="confirmation-maps-btn"
           >
             <span className="material-symbols-outlined text-[18px]">directions</span>
-            <span>Get Google Maps Directions to Clinic</span>
+            <span>Get Directions in Google Maps</span>
           </a>
 
           <a

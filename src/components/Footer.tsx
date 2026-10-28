@@ -105,9 +105,18 @@ export const Footer: React.FC = () => {
               <div className="pt-2">
                 <p className="font-bold text-white flex items-center gap-1">
                   <span className="material-symbols-outlined text-[16px] text-white">location_on</span>
-                  Hanamkonda Central
+                  Clinic Location
                 </p>
-                <p className="text-xs text-white/70 mt-0.5">{clinicInfo.address}</p>
+                <p className="text-xs text-white/80 mt-0.5 leading-relaxed">{clinicInfo.address}</p>
+                <a
+                  href={clinicInfo.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[11px] font-bold text-white/90 hover:text-white mt-1.5 underline underline-offset-2"
+                >
+                  <span>Get Directions</span>
+                  <span className="material-symbols-outlined text-[12px]">open_in_new</span>
+                </a>
               </div>
               <div>
                 <a

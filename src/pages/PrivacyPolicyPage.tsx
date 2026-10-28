@@ -17,7 +17,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
         <div className="space-y-6 text-xs sm:text-sm text-secondary leading-relaxed">
           <p>
-            At <strong>Sunshine Dental Clinic</strong> (Hanamkonda Central, Warangal Urban District, Telangana), we hold patient confidentiality and medical record privacy to the highest ethical and regulatory standards.
+            At <strong>Sunshine Dental Clinic</strong> (Chowrastha, Hanamkonda, Warangal, Telangana), we hold patient confidentiality and medical record privacy to the highest ethical and regulatory standards.
           </p>
 
           <div>

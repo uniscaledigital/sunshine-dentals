@@ -58,12 +58,13 @@ export const DoctorBhanujaPage: React.FC = () => {
             <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-on-surface">
               {doctor.name}
             </h1>
-            <p className="text-sm sm:text-base font-semibold text-primary mt-1">
+            <p className="text-base sm:text-lg font-bold text-primary mt-1">
               {doctor.qualification}
             </p>
+            <p className="text-sm font-semibold text-secondary mt-0.5">
+              {doctor.qualificationDescription}
+            </p>
           </div>
-
-
 
           {/* Full Bio */}
           <div>
@@ -74,14 +75,14 @@ export const DoctorBhanujaPage: React.FC = () => {
               {doctor.bio}
             </p>
             <p className="text-sm text-secondary leading-relaxed">
-              Dr. Bhanuja is particularly renowned for her clear, transparent chairside communication. Before performing any extraction or surgical restoration, she meticulously walks patients through digital low-dose radiography imagery, dispelling the intimidation typically associated with oral surgery and ensuring a swift, predictable 1-day recovery protocol.
+              Dr. Bhanuja is particularly renowned for her clear, transparent chairside communication. Before performing any restorative or dental procedure, she meticulously walks patients through digital low-dose radiography imagery, dispelling the intimidation typically associated with dental visits and ensuring a calm, comfortable care protocol.
             </p>
           </div>
 
           {/* Key Clinical Focus */}
           <div className="bg-white rounded-2xl p-6 border border-surface-container shadow-sm">
             <h2 className="font-headline font-bold text-lg text-on-surface mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-[22px]">psychiatry</span>
+              <span className="material-symbols-outlined text-primary text-[22px]">clinical_notes</span>
               Key Areas of Clinical Focus
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -132,7 +133,8 @@ export const DoctorBhanujaPage: React.FC = () => {
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-4 text-white">
                 <p className="font-headline font-bold text-lg">{doctor.name}</p>
-                <p className="text-xs opacity-90">{doctor.role} • Registered Dental Practitioner</p>
+                <p className="text-xs opacity-90">{doctor.qualification} • {doctor.qualificationDescription}</p>
+                <p className="text-[11px] text-white/90 font-medium">Registration No.: {doctor.registrationNumber}</p>
                 <p className="text-[11px] text-green-300 font-semibold mt-1 flex items-center gap-1">
                   <span className="material-symbols-outlined text-[14px]">schedule</span>
                   {doctor.schedule}

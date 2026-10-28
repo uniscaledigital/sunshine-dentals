@@ -10,11 +10,14 @@ export const DoctorsPage: React.FC = () => {
       <section className="bg-surface-container-low py-12 lg:py-16 border-b border-surface-container">
         <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 text-center max-w-3xl">
           <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
-            Clinical Faculty & Specialists
+            Clinical Team
           </span>
           <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
             Our Doctors
           </h1>
+          <p className="text-sm text-secondary mt-3 max-w-2xl mx-auto leading-relaxed">
+            Both doctors provide comprehensive dental care for a wide range of dental concerns, helping patients find appropriate treatment for their oral health needs.
+          </p>
         </div>
       </section>
 
@@ -42,23 +45,32 @@ export const DoctorsPage: React.FC = () => {
 
                 {/* Details */}
                 <div className="p-6 sm:p-8">
-                  <span className="text-xs font-bold text-primary uppercase tracking-wider">
-                    {doctor.role}
-                  </span>
-                  <h2 className="font-headline font-bold text-2xl sm:text-3xl text-on-surface mt-1">
+                  <h2 className="font-headline font-bold text-2xl sm:text-3xl text-on-surface">
                     {doctor.name}
                   </h2>
-                  <p className="text-xs sm:text-sm font-semibold text-secondary mb-4">
+                  <p className="text-sm font-bold text-primary mt-1">
                     {doctor.qualification}
                   </p>
-
-                  <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed mb-6">
-                    {doctor.focus}
+                  <p className="text-xs font-semibold text-secondary mt-0.5">
+                    {doctor.qualificationDescription}
                   </p>
+                  <p className="text-xs font-bold text-primary mt-2 flex items-center gap-1">
+                    <span className="material-symbols-outlined text-[15px]">badge</span>
+                    Registration No.: {doctor.registrationNumber}
+                  </p>
+
+                  <div className="mt-4 pt-4 border-t border-surface-container">
+                    <span className="text-xs font-bold text-on-surface block">
+                      {doctor.role}
+                    </span>
+                    <p className="text-xs sm:text-sm text-secondary leading-relaxed mt-1 mb-5">
+                      {doctor.focus}
+                    </p>
+                  </div>
 
                   <div className="bg-surface-container-low rounded-2xl p-4 border border-surface-container mb-6">
                     <p className="text-xs font-bold text-on-surface mb-2 flex items-center gap-1.5">
-                      <span className="material-symbols-outlined text-primary text-[18px]">psychiatry</span>
+                      <span className="material-symbols-outlined text-primary text-[18px]">clinical_notes</span>
                       Key Clinical Focus:
                     </p>
                     <ul className="space-y-1.5">
@@ -84,7 +96,7 @@ export const DoctorsPage: React.FC = () => {
                   to={`/doctors/${doctor.id}`}
                   className="w-full text-center py-3.5 px-4 rounded-xl font-bold text-xs bg-primary hover:bg-primary-container text-white shadow-md transition-all flex items-center justify-center gap-1.5"
                 >
-                  <span>View Specialist Profile</span>
+                  <span>View Doctor Profile</span>
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </Link>
               </div>

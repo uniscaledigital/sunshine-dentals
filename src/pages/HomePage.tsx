@@ -16,19 +16,10 @@ export const HomePage: React.FC = () => {
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-surface-container-low group">
               <img
-                src="/images/stitch/stitch_img_3.jpg"
-                alt="Modern high-end dental operatory in Hanamkonda at Sunshine Dental"
-                className="w-full h-[300px] sm:h-[400px] md:h-[480px] lg:h-[540px] object-cover group-hover:scale-105 transition-transform duration-700"
+                src="/images/logohero.png"
+                alt="Sunshine Dental Clinic reception branding in Hanamkonda"
+                className="w-full h-auto block object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-                <span className="inline-flex items-center gap-1.5 bg-primary/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold w-fit mb-2">
-                  <span className="material-symbols-outlined text-[16px]">verified</span>
-                  Sterile Operatory Suite
-                </span>
-                <p className="text-sm font-semibold opacity-90">
-                  Hospital Grade Class-B Autoclaves & Low-Dose Digital Radiography
-                </p>
-              </div>
             </div>
           </div>
 
@@ -44,7 +35,7 @@ export const HomePage: React.FC = () => {
             </h1>
 
             <p className="text-base sm:text-lg text-secondary font-medium leading-relaxed">
-              Experience the pinnacle of sterile, compassionate, and pain-free modern dentistry. Spearheaded by certified dental surgeons utilizing microscope-guided diagnostics and gentle care.
+              Experience the pinnacle of sterile, compassionate, and pain-free modern dentistry. Both doctors provide comprehensive dental care for a wide range of dental concerns with gentle care and modern diagnostics.
             </p>
 
             {/* CTAs */}
@@ -85,7 +76,7 @@ export const HomePage: React.FC = () => {
               Meet Your Dental Care Experts
             </h2>
             <p className="text-sm text-secondary mt-2">
-              Our clinic is led by two dedicated specialists committed to empathetic communication, clinical mastery, and gentle care.
+              Both doctors provide comprehensive dental care for a wide range of dental concerns, helping patients find appropriate treatment for their oral health needs.
             </p>
           </div>
 
@@ -111,20 +102,29 @@ export const HomePage: React.FC = () => {
 
                   {/* Doctor Info */}
                   <div className="p-6">
-                    <span className="text-xs font-bold text-primary uppercase tracking-wider">
-                      {doctor.role}
-                    </span>
-                    <h3 className="font-headline font-bold text-2xl text-on-surface mt-1">
+                    <h3 className="font-headline font-bold text-2xl text-on-surface">
                       {doctor.name}
                     </h3>
-                    <p className="text-xs font-semibold text-secondary mb-3">
+                    <p className="text-sm font-bold text-primary mt-1">
                       {doctor.qualification}
                     </p>
-                    <p className="text-xs text-on-surface-variant leading-relaxed line-clamp-3 mb-4">
-                      {doctor.focus}
+                    <p className="text-xs font-semibold text-secondary mt-0.5">
+                      {doctor.qualificationDescription}
                     </p>
+                    <p className="text-xs font-bold text-primary mt-2 flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[15px]">badge</span>
+                      Registration No.: {doctor.registrationNumber}
+                    </p>
+                    <div className="mt-3 pt-3 border-t border-surface-container">
+                      <p className="text-xs font-bold text-on-surface">
+                        {doctor.role}
+                      </p>
+                      <p className="text-xs text-secondary leading-relaxed mt-1">
+                        {doctor.focus}
+                      </p>
+                    </div>
 
-                    <div className="bg-surface-container-low rounded-xl p-3 border border-surface-container text-xs text-secondary flex items-center gap-2">
+                    <div className="bg-surface-container-low rounded-xl p-3 border border-surface-container text-xs text-secondary flex items-center gap-2 mt-4">
                       <span className="material-symbols-outlined text-[18px] text-primary">schedule</span>
                       <span>OPD: {doctor.schedule}</span>
                     </div>
@@ -136,7 +136,7 @@ export const HomePage: React.FC = () => {
                     to={`/doctors/${doctor.id}`}
                     className="w-full text-center py-3 px-4 rounded-xl font-bold text-xs bg-primary hover:bg-primary-container text-white shadow-sm transition-all flex items-center justify-center gap-1.5"
                   >
-                    <span>View Specialist Profile</span>
+                    <span>View Doctor Profile</span>
                     <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                   </Link>
                 </div>
@@ -350,7 +350,7 @@ export const HomePage: React.FC = () => {
                 Visit Sunshine Dental Clinic
               </h2>
               <p className="text-sm text-secondary leading-relaxed">
-                Located conveniently at Hanamkonda Central in Warangal Urban District.
+                Located conveniently at Chowrastha, Hanamkonda in Warangal Urban District.
               </p>
 
               <div className="space-y-3 text-sm">
@@ -358,7 +358,7 @@ export const HomePage: React.FC = () => {
                   <span className="material-symbols-outlined text-primary text-[22px] mt-0.5">location_on</span>
                   <div>
                     <p className="font-bold text-on-surface">Address</p>
-                    <p className="text-xs text-secondary">{clinicInfo.address}</p>
+                    <p className="text-xs text-secondary leading-relaxed">{clinicInfo.address}</p>
                     <p className="text-xs text-primary font-semibold mt-0.5">Landmark: {clinicInfo.landmark}</p>
                   </div>
                 </div>
@@ -391,7 +391,7 @@ export const HomePage: React.FC = () => {
                   id="navigate-maps-btn"
                 >
                   <span className="material-symbols-outlined text-[18px]">directions</span>
-                  Navigate to Sunshine Dental
+                  Get Directions
                 </a>
                 <a
                   href={`tel:${clinicInfo.phone}`}
@@ -408,24 +408,25 @@ export const HomePage: React.FC = () => {
               <div className="w-full h-[280px] sm:h-[320px] lg:h-[360px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-2 border-white bg-surface-container relative">
                 <iframe
                   title="Sunshine Dental Clinic Location Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.856956799042!2d79.559281!3d18.013715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334f59e99a8b11%3A0x6b4ef82ec35a901!2sHanamkonda%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15177.62923104924!2d79.57271449999999!3d18.006291400000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3345c246e700e9%3A0x7d5418ab93def97b!2sSUNSHINE%20DENTAL%20CLINIC!5e0!3m2!1sen!2sin!4v1793217617964!5m2!1sen!2sin"
                   className="w-full h-full border-0"
+                  style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="strict-origin-when-cross-origin"
                 ></iframe>
                 <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4 bg-white/95 backdrop-blur-md p-2.5 sm:p-3 rounded-xl border border-surface-container shadow-md flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                     <span className="material-symbols-outlined text-primary text-[18px] sm:text-[20px] shrink-0">pin_drop</span>
-                    <span className="text-[10px] sm:text-xs font-bold text-on-surface truncate">Sunshine Dental • Hanamkonda Central</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-on-surface truncate">Sunshine Dental • Chowrastha, Hanamkonda</span>
                   </div>
                   <a
                     href={clinicInfo.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
+                    className="text-xs font-bold text-primary hover:underline flex items-center gap-1 shrink-0"
                   >
-                    Open in Maps
+                    Get Directions
                     <span className="material-symbols-outlined text-[14px]">open_in_new</span>
                   </a>
                 </div>

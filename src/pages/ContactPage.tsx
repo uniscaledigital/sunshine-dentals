@@ -16,7 +16,7 @@ export const ContactPage: React.FC = () => {
             Clinic Contact & Location
           </h1>
           <p className="text-base text-secondary mt-3 leading-relaxed">
-            Conveniently situated in Hanamkonda Central. Walk in during our continuous OPD or connect with our front desk staff directly.
+            Conveniently situated above Satyam’s Diabetic Clinic at Chowrastha, Hanamkonda. Walk in during our continuous OPD or connect with our front desk staff directly.
           </p>
         </div>
       </section>
@@ -110,13 +110,11 @@ export const ContactPage: React.FC = () => {
                   id="navigate-google-maps"
                 >
                   <span className="material-symbols-outlined text-[18px]">directions</span>
-                  <span>Navigate to Sunshine Dental in Google Maps</span>
+                  <span>Get Directions in Google Maps</span>
                 </a>
               </div>
 
             </div>
-
-
 
           </div>
 
@@ -125,17 +123,18 @@ export const ContactPage: React.FC = () => {
             <div className="w-full h-[300px] sm:h-[400px] lg:h-[520px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-2 sm:border-4 border-white bg-surface-container relative">
               <iframe
                 title="Sunshine Dental Clinic Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.856956799042!2d79.559281!3d18.013715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334f59e99a8b11%3A0x6b4ef82ec35a901!2sHanamkonda%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15177.62923104924!2d79.57271449999999!3d18.006291400000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3345c246e700e9%3A0x7d5418ab93def97b!2sSUNSHINE%20DENTAL%20CLINIC!5e0!3m2!1sen!2sin!4v1793217617964!5m2!1sen!2sin"
                 className="w-full h-full border-0"
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
               ></iframe>
 
               <div className="absolute top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-surface-container shadow-md flex items-center justify-between gap-2">
                 <div className="min-w-0">
                   <p className="font-headline font-bold text-xs sm:text-sm text-on-surface truncate">Sunshine Dental Clinic</p>
-                  <p className="text-[10px] sm:text-xs text-secondary truncate">Hanamkonda Central, Warangal Urban, Telangana</p>
+                  <p className="text-[10px] sm:text-xs text-secondary truncate">Chowrastha, Hanamkonda, Warangal, Telangana – 506011</p>
                 </div>
                 <a
                   href={clinicInfo.mapUrl}
@@ -144,7 +143,7 @@ export const ContactPage: React.FC = () => {
                   className="bg-primary text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-2 rounded-lg shadow-sm hover:bg-primary-container transition-all flex items-center gap-1 shrink-0"
                 >
                   <span className="material-symbols-outlined text-[16px]">navigation</span>
-                  Route
+                  Get Directions
                 </a>
               </div>
             </div>

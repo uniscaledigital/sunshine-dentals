@@ -58,12 +58,13 @@ export const DoctorMadhuriPage: React.FC = () => {
             <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-on-surface">
               {doctor.name}
             </h1>
-            <p className="text-sm sm:text-base font-semibold text-primary mt-1">
+            <p className="text-base sm:text-lg font-bold text-primary mt-1">
               {doctor.qualification}
             </p>
+            <p className="text-sm font-semibold text-secondary mt-0.5">
+              {doctor.qualificationDescription}
+            </p>
           </div>
-
-
 
           {/* Full Bio */}
           <div>
@@ -74,7 +75,7 @@ export const DoctorMadhuriPage: React.FC = () => {
               {doctor.bio}
             </p>
             <p className="text-sm text-secondary leading-relaxed">
-              Dr. Madhuri specializes in eliminating the fear of root canal procedures through single-sitting rotary instrumentation and microscopic magnification. Her dual expertise in aesthetic restorations allows patients to complete their root canal and crown fitting or cosmetic veneer makeover in minimal visits with natural-looking zirconia aesthetics.
+              Dr. Madhuri provides comprehensive dental care with gentle precision and compassionate attention. Her clinical focus emphasizes preserving natural tooth structure and delivering comfortable, stress-free care tailored to each patient's specific oral health needs.
             </p>
           </div>
 
@@ -97,7 +98,7 @@ export const DoctorMadhuriPage: React.FC = () => {
           {/* Treatments Administered */}
           <div>
             <h2 className="font-headline font-bold text-xl text-on-surface mb-4">
-              Treatments Led by {doctor.name}
+              Treatments Administered by {doctor.name}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {doctorServices.map((srv) => (
@@ -132,7 +133,8 @@ export const DoctorMadhuriPage: React.FC = () => {
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-4 text-white">
                 <p className="font-headline font-bold text-lg">{doctor.name}</p>
-                <p className="text-xs opacity-90">{doctor.role} • Registered Dental Specialist</p>
+                <p className="text-xs opacity-90">{doctor.qualification} • {doctor.qualificationDescription}</p>
+                <p className="text-[11px] text-white/90 font-medium">Registration No.: {doctor.registrationNumber}</p>
                 <p className="text-[11px] text-green-300 font-semibold mt-1 flex items-center gap-1">
                   <span className="material-symbols-outlined text-[14px]">schedule</span>
                   {doctor.schedule}

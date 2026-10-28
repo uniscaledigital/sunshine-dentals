@@ -1,19 +1,19 @@
 # Sunshine Dental Clinic Website
 
-Official modern clinic website for **Sunshine Dental Clinic** in Hanamkonda Central, Warangal Urban District, Telangana. Faithfully implemented based on the Google Stitch UI design system and the official clinic specification brief.
+Official modern clinic website for **Sunshine Dental Clinic** at Chowrastha, Hanamkonda, Warangal Urban District, Telangana. Faithfully implemented based on the Google Stitch UI design system and the official clinic specification brief.
 
 ---
 
 ## 🌟 Overview & Highlights
 
-- **Lead Practitioners**: Dr. Bhanuja (Lead Dental Surgeon) & Dr. Madhuri (Aesthetic & Endo Specialist).
+- **Dental Practitioners**: Dr. Bhanuja (BDS, FMCD — Master's in Clinical Dentistry) & Dr. Madhuri (BDS, FCD — Fellowship in Clinical Dentistry).
 - **Core Clinical Services**: Wisdom Tooth & Extractions, Root Canal Treatment (RCT), Teeth Whitening & Veneers, Braces & Clear Aligners, Dental Implants & Bridges, Kids Dental & Deep Scaling.
 - **Conversion Features**:
   - Interactive Before & After Smile Slider.
   - Direct 1-Click Online Appointment Request with treatment preselection.
   - Sticky Mobile Action Bar ("Call Clinic" & "WhatsApp Us").
   - Desktop Floating WhatsApp chat trigger.
-  - Interactive Google Maps route trigger for Hanamkonda Central.
+  - Interactive Google Maps route trigger for Chowrastha, Hanamkonda.
   - Local SEO Schema (`Dentist` / `MedicalClinic` JSON-LD).
   - Vercel SPA routing compatible (`vercel.json`).
 

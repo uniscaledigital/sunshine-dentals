@@ -67,10 +67,10 @@ export const AboutPage: React.FC = () => {
               Clinical Leadership
             </span>
             <h2 className="font-headline text-2xl sm:text-3xl font-bold text-on-surface mt-3">
-              Founded & Practiced by Certified Specialists
+              Founded & Practiced by Dedicated Doctors
             </h2>
             <p className="text-sm text-secondary mt-2">
-              No rotating temporary trainees. Your consultations, diagnostics, and procedures are handled directly by our lead doctors.
+              Both doctors provide comprehensive dental care for a wide range of dental concerns, helping patients find appropriate treatment for their oral health needs.
             </p>
           </div>
 
@@ -86,9 +86,10 @@ export const AboutPage: React.FC = () => {
                     />
                     <div>
                       <h3 className="font-headline font-bold text-xl text-on-surface">{doc.name}</h3>
-                      <p className="text-xs font-semibold text-primary">{doc.role}</p>
-                      <p className="text-[11px] text-secondary">{doc.qualification}</p>
-                      <p className="text-[11px] font-bold text-primary mt-0.5">Registration No.: {doc.registrationNumber}</p>
+                      <p className="text-xs font-bold text-primary">{doc.qualification}</p>
+                      <p className="text-[11px] font-semibold text-secondary">{doc.qualificationDescription}</p>
+                      <p className="text-[11px] font-bold text-primary mt-1">Registration No.: {doc.registrationNumber}</p>
+                      <p className="text-[11px] font-medium text-on-surface mt-1">{doc.role}</p>
                     </div>
                   </div>
                   <p className="text-xs text-secondary leading-relaxed mb-4">
