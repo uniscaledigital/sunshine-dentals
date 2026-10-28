@@ -52,3 +52,71 @@
 .amber-gradient {
   background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
 }
+
+/* ==========================================================================
+   Sunshine Dental - Premium Animated Logo Intro
+   ========================================================================== */
+@keyframes introLogoAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes introRayBloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes introTaglineAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introOverlayDissolve {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.intro-logo-enter {
+  animation: introLogoAppear 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.intro-tagline-enter {
+  animation: introTaglineAppear 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-logo-enter,
+  .intro-tagline-enter {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

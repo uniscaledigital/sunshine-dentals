@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { LogoIntro } from './components/LogoIntro';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { MobileActionBar } from './components/MobileActionBar';
@@ -30,6 +31,7 @@ const ScrollToTop: React.FC = () => {
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
+      <LogoIntro />
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-surface text-on-surface">
         <Navbar />

@@ -1,0 +1,491 @@
+import React, { useEffect, useState } from 'react';
+
+/**
+ * Premium Animated Logo Intro for Sunshine Dental Clinic
+ *
+ * Sequence (~2.2s total):
+ * - Phase 1: Pure white screen -> Smooth logo reveal (opacity fade, scale-up 0.92 -> 1.0, gentle upward movement, refined vector rays bloom)
+ * - Phase 2: Tagline "Your Smile, Our Priority" soft fade-in & upward drift in brand typography & color
+ * - Phase 3: Settle & hold briefly -> Silky fade-out of white overlay to reveal the website
+ *
+ * Requirements satisfied:
+ * - Pure code (CSS & React), no video/Lottie/external assets
+ * - Preserves original logo design & official espresso-brown color (#391F13)
+ * - Respects prefers-reduced-motion
+ * - Prevents layout shifts & scrolling during intro
+ * - Stored in sessionStorage so internal route navigation does not replay intro
+ * - Clean responsive display on mobile & desktop
+ */
+export const LogoIntro: React.FC = () => {
+  const [shouldRender, setShouldRender] = useState<boolean>(true);
+  const [phase, setPhase] = useState<'blank' | 'logo' | 'tagline' | 'fadeout'>('blank');
+
+  useEffect(() => {
+    if (!shouldRender) return;
+
+    // Check accessibility preference
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+      }, 400);
+      return () => clearTimeout(timer);
+    }
+
+    // Lock page scroll while overlay is active
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    // Sequence timeline
+    // 0.08s: Begin Phase 1 (Logo Reveal)
+    const tLogo = setTimeout(() => {
+      setPhase('logo');
+    }, 80);
+
+    // 0.90s: Begin Phase 2 (Tagline Reveal)
+    const tTagline = setTimeout(() => {
+      setPhase('tagline');
+    }, 900);
+
+    // 1.85s: Begin Phase 3 (Website Transition / Overlay Dissolve)
+    const tFadeOut = setTimeout(() => {
+      setPhase('fadeout');
+    }, 1850);
+
+    // 2.40s: Complete intro, restore scroll, unmount
+    const tComplete = setTimeout(() => {
+      document.body.style.overflow = originalOverflow;
+      setShouldRender(false);
+    }, 2400);
+
+    return () => {
+      clearTimeout(tLogo);
+      clearTimeout(tTagline);
+      clearTimeout(tFadeOut);
+      clearTimeout(tComplete);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [shouldRender]);
+
+  const handleDismiss = () => {
+    document.body.style.overflow = '';
+    setShouldRender(false);
+  };
+
+  if (!shouldRender) return null;
+
+  const isLogoActive = phase === 'logo' || phase === 'tagline' || phase === 'fadeout';
+  const isTaglineActive = phase === 'tagline' || phase === 'fadeout';
+
+  return (
+    <div
+      id="sunshine-logo-intro-overlay"
+      className={`fixed inset-0 z-[999999] bg-white flex flex-col items-center justify-center select-none overflow-hidden transition-opacity duration-600 ease-out ${
+        phase === 'fadeout' ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
+      }`}
+      aria-label="Sunshine Dental Clinic Intro"
+    >
+      <div className="flex flex-col items-center justify-center px-4 max-w-md w-full text-center">
+        
+        {/* Phase 1: Logo Container (Fade + Scale + Upward settling) */}
+        <div
+          className={`transform transition-all duration-800 ease-out ${
+            isLogoActive
+              ? 'opacity-100 scale-100 translate-y-0'
+              : 'opacity-0 scale-[0.92] translate-y-5'
+          }`}
+        >
+          <svg
+            viewBox="0 0 206.64 221.76"
+            className="w-44 h-auto sm:w-56 md:w-64 mx-auto"
+            fill="#391F13"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Sun Rays: Radiating flower of sunshine burst with staggered reveal */}
+            <g id="intro-sun-rays">
+              <path
+                d="M 150.23 127.81 L 152.61 123.06 C 152.83 122.61 153.39 122.43 153.84 122.67 L 197.18 145.53 C 198.19 146.06 197.49 147.59 196.43 147.17 L 150.71 129.06 C 150.21 128.87 149.99 128.29 150.23 127.81 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '140ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 154.32 112.30 L 155.28 107.16 C 155.37 106.65 155.87 106.33 156.37 106.44 L 183.30 112.60 C 184.37 112.85 184.16 114.43 183.06 114.39 L 155.18 113.37 C 154.62 113.35 154.22 112.84 154.32 112.30 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '166ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 155.25 95.38 L 154.18 90.18 C 154.08 89.68 154.41 89.20 154.91 89.11 L 203.12 80.34 C 204.25 80.14 204.64 81.78 203.54 82.11 L 156.39 96.07 C 155.88 96.22 155.35 95.90 155.25 95.38 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '192ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 150.43 80.83 L 147.87 76.27 C 147.61 75.82 147.79 75.26 148.24 75.02 L 172.84 62.46 C 173.82 61.96 174.68 63.31 173.81 63.98 L 151.78 81.10 C 151.34 81.44 150.70 81.31 150.43 80.83 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '218ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 138.13 65.44 L 134.09 62.00 C 133.70 61.67 133.66 61.09 134.00 60.71 L 166.53 24.06 C 167.29 23.20 168.61 24.25 167.94 25.19 L 139.46 65.27 C 139.15 65.70 138.54 65.78 138.13 65.44 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '244ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 104.50 53.04 L 99.19 53.14 C 98.69 53.15 98.27 52.74 98.27 52.23 L 98.40 3.23 C 98.41 2.09 100.09 2.00 100.21 3.14 L 105.39 52.04 C 105.44 52.57 105.04 53.03 104.50 53.04 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '270ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 72.71 64.07 L 68.48 67.28 C 68.08 67.59 67.50 67.50 67.20 67.09 L 38.44 27.42 C 37.77 26.49 39.08 25.43 39.85 26.28 L 72.84 62.74 C 73.19 63.14 73.14 63.75 72.71 64.07 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '296ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 53.28 94.71 L 52.55 99.97 C 52.48 100.47 52.01 100.82 51.51 100.74 L 3.13 92.96 C 2.00 92.78 2.18 91.10 3.32 91.16 L 52.43 93.68 C 52.96 93.70 53.35 94.18 53.28 94.71 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '322ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 57.99 126.40 L 59.97 131.33 C 60.16 131.80 59.93 132.33 59.45 132.51 L 13.62 149.84 C 12.55 150.25 11.87 148.70 12.89 148.18 L 56.74 125.93 C 57.21 125.69 57.79 125.91 57.99 126.40 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '348ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 122.34 55.86 L 117.36 54.27 C 116.87 54.12 116.60 53.58 116.78 53.10 L 126.21 27.14 C 126.59 26.11 128.13 26.51 127.96 27.59 L 123.51 55.14 C 123.42 55.69 122.87 56.03 122.34 55.86 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '374ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 87.99 55.83 L 83.12 57.75 C 82.65 57.94 82.11 57.69 81.94 57.21 L 72.84 31.13 C 72.48 30.09 73.93 29.42 74.48 30.37 L 88.44 54.53 C 88.72 55.01 88.50 55.63 87.99 55.83 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '400ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 61.11 76.22 L 58.77 80.90 C 58.54 81.36 57.97 81.54 57.52 81.29 L 33.33 67.95 C 32.37 67.42 33.01 65.96 34.05 66.30 L 60.58 74.96 C 61.10 75.13 61.35 75.73 61.11 76.22 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '426ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+              <path
+                d="M 53.36 111.99 L 54.25 117.14 C 54.34 117.65 53.99 118.13 53.48 118.19 L 26.09 121.80 C 25.00 121.94 24.64 120.38 25.69 120.04 L 52.18 111.28 C 52.71 111.11 53.27 111.44 53.36 111.99 Z"
+                style={{
+                  transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '452ms',
+                  transformOrigin: '103px 110px',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'scale(1)' : 'scale(0.8)',
+                }}
+              />
+            </g>
+
+            {/* Central Tooth Emblem */}
+            <g id="intro-tooth-icon">
+              <path
+                d="M 110.73 110.48 C 114.92 112.49 117.87 118.52 118.58 122.87 C 119.43 128.17 118.40 139.31 112.63 141.78 C 112.47 141.85 111.63 142.11 111.56 142.05 L 113.50 139.36 C 117.74 132.50 117.83 120.11 111.81 114.29 C 107.77 110.37 102.65 111.95 100.26 116.65 C 97.06 122.91 98.55 132.12 102.20 137.91 C 103.22 139.52 104.81 140.82 106.10 142.21 C 106.22 142.33 106.56 142.33 106.29 142.57 C 104.43 142.42 102.46 141.16 101.21 139.79 C 96.83 134.98 95.03 125.05 96.78 118.88 C 98.50 112.84 104.14 107.32 110.73 110.48 Z"
+                style={{
+                  transition: 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '100ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(4px)',
+                }}
+              />
+              <path
+                d="M 107.64 150.55 C 90.54 145.77 79.95 130.14 72.78 114.62 C 70.63 109.96 68.81 104.98 68.97 99.85 C 69.13 94.73 71.65 89.40 76.27 87.17 C 81.86 84.46 88.42 86.85 94.47 88.25 C 100.53 89.66 108.37 89.21 111.03 83.59 C 110.53 88.83 105.89 93.37 100.64 93.75 C 93.13 94.29 85.59 87.42 78.74 90.55 C 75.05 92.24 73.06 96.52 73.02 100.58 C 72.98 104.64 74.54 108.54 76.30 112.20 C 83.50 127.22 94.44 140.38 107.64 150.55 Z"
+                style={{
+                  transition: 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '150ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(4px)',
+                }}
+              />
+              <path
+                d="M 114.92 147.28 C 114.84 147.32 114.76 147.36 114.68 147.40 C 117.77 142.38 121.07 137.52 124.22 132.54 C 125.87 129.94 127.42 127.00 128.97 123.57 C 129.64 122.09 130.31 120.51 131.02 118.74 C 137.67 102.23 137.73 89.71 131.20 81.55 C 129.57 79.50 126.11 76.00 121.26 75.52 C 116.20 75.03 112.58 78.13 108.75 81.41 C 108.12 81.95 107.50 82.49 106.87 83.00 C 105.60 84.05 101.13 87.42 97.24 86.98 C 95.73 86.81 94.48 86.10 93.53 84.88 C 93.38 84.68 93.27 84.52 93.27 84.52 L 91.89 82.56 L 94.26 82.96 C 94.26 82.96 94.97 83.08 95.18 83.11 C 98.14 83.45 101.12 82.38 104.27 79.85 C 104.85 79.38 105.40 78.87 105.98 78.33 C 106.71 77.66 107.46 76.96 108.29 76.35 L 109.13 75.72 C 110.31 74.83 111.52 73.91 112.83 73.18 C 113.42 72.85 113.97 72.60 114.51 72.39 C 124.90 68.50 134.39 76.20 138.05 85.42 C 142.87 97.59 137.83 112.67 133.61 122.96 C 129.66 132.62 124.54 142.30 114.92 147.28 Z"
+                style={{
+                  transition: 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: '200ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(4px)',
+                }}
+              />
+            </g>
+
+            {/* Wordmark: SUNSHINE */}
+            <g id="intro-sunshine-text">
+              <path
+                d="M 25.12 183.40 C 25.75 186.65 27.21 189.79 29.71 190.47 C 29.98 190.55 30.24 190.58 30.53 190.58 L 30.85 190.58 C 31.93 190.50 32.80 190.18 33.49 189.68 C 34.17 189.18 34.57 188.71 34.70 188.26 C 34.81 187.81 34.86 187.46 34.86 187.25 C 34.86 186.75 34.70 186.17 34.36 185.51 C 34.02 184.85 33.30 184.19 32.22 183.53 C 27.79 180.92 21.87 179.39 21.87 174.50 C 21.87 169.33 27.18 167.48 32.09 167.48 L 32.35 167.48 C 36.92 167.59 40.67 169.44 42.81 172.63 L 37.82 175.37 C 37.18 172.15 35.78 169.22 33.38 168.38 L 33.28 168.33 C 32.96 168.22 32.62 168.17 32.25 168.17 C 30.27 168.17 28.45 169.62 28.45 171.73 C 28.45 175.98 37.13 176.85 40.40 181.18 C 41.25 182.32 41.43 183.61 41.43 184.46 C 41.43 185.22 41.35 186.46 40.30 187.91 C 39.77 188.65 39.03 189.26 38.06 189.71 C 35.86 190.74 33.43 191.27 30.72 191.29 C 26.07 191.27 22.32 189.42 20.10 186.14 L 25.12 183.40 Z"
+                style={{
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                  transitionDelay: '240ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(5px)',
+                }}
+              />
+              <path
+                d="M 45.74 167.75 L 53.50 167.75 L 53.36 167.98 C 53.10 168.48 52.63 169.54 52.57 170.75 L 52.57 180.89 C 52.57 185.12 53.00 190.55 57.19 190.55 C 61.42 190.55 64.19 187.23 64.19 180.89 L 64.19 170.65 C 64.11 169.41 63.34 168.41 62.29 167.75 L 66.80 167.75 C 65.67 168.46 64.95 169.49 64.87 170.78 L 64.87 180.89 C 64.87 187.86 61.86 191.21 57.19 191.21 C 50.04 191.21 46.66 187.89 46.66 180.89 L 46.66 170.81 C 46.61 169.59 46.13 168.48 45.87 167.98 L 45.74 167.75 Z"
+                style={{
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                  transitionDelay: '260ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(5px)',
+                }}
+              />
+              <path
+                d="M 68.91 191.11 C 70.07 190.39 70.84 189.29 70.84 187.91 L 70.84 167.75 L 76.59 167.75 C 78.15 170.65 79.60 173.37 80.95 175.90 C 83.27 180.26 85.83 185.09 86.89 187.07 L 86.89 170.94 C 86.89 169.57 86.10 168.46 84.96 167.75 L 89.48 167.75 C 88.31 168.46 87.55 169.57 87.55 170.94 L 87.55 191.11 L 82.38 191.11 C 82.22 190.90 80.37 187.33 78.10 183.06 C 75.83 178.81 73.16 173.84 71.53 170.73 L 71.53 187.91 C 71.53 189.29 72.27 190.39 73.43 191.11 L 68.91 191.11 Z"
+                style={{
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                  transitionDelay: '280ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(5px)',
+                }}
+              />
+              <path
+                d="M 94.76 183.40 C 95.39 186.65 96.84 189.79 99.35 190.47 C 99.61 190.55 99.88 190.58 100.17 190.58 L 100.48 190.58 C 101.57 190.50 102.44 190.18 103.12 189.68 C 103.81 189.18 104.21 188.71 104.34 188.26 C 104.44 187.81 104.50 187.46 104.50 187.25 C 104.50 186.75 104.34 186.17 103.99 185.51 C 103.65 184.85 102.94 184.19 101.86 183.53 C 97.42 180.92 91.51 179.39 91.51 174.50 C 91.51 169.33 96.82 167.48 101.73 167.48 L 101.99 167.48 C 106.56 167.59 110.30 169.44 112.44 172.63 L 107.45 175.37 C 106.82 172.15 105.42 169.22 103.02 168.38 L 102.91 168.33 C 102.60 168.22 102.25 168.17 101.88 168.17 C 99.90 168.17 98.08 169.62 98.08 171.73 C 98.08 175.98 106.77 176.85 110.04 181.18 C 110.89 182.32 111.07 183.61 111.07 184.46 C 111.07 185.22 110.99 186.46 109.93 187.91 C 109.41 188.65 108.67 189.26 107.69 189.71 C 105.50 190.74 103.07 191.27 100.35 191.29 C 95.71 191.27 91.96 189.42 89.74 186.14 L 94.76 183.40 Z"
+                style={{
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                  transitionDelay: '300ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(5px)',
+                }}
+              />
+              <path
+                d="M 122.08 167.75 C 121.89 168.06 121.73 168.41 121.60 168.75 C 121.36 169.36 121.15 170.20 121.15 171.02 L 121.15 179.41 L 129.94 179.41 L 129.94 171.02 C 129.94 169.75 129.44 168.54 129.15 168.01 L 128.99 167.75 L 136.75 167.75 C 136.57 168.06 136.41 168.41 136.28 168.75 C 136.04 169.36 135.83 170.20 135.83 171.02 L 135.83 187.94 C 135.83 188.76 136.07 189.52 136.31 190.13 C 136.44 190.47 136.60 190.79 136.75 191.11 L 128.99 191.13 C 129.18 190.82 129.34 190.47 129.47 190.13 C 129.71 189.52 129.94 188.68 129.94 187.83 L 129.94 180.10 L 121.15 180.10 L 121.15 182.53 C 121.15 184.11 121.13 185.51 121.13 186.59 L 121.13 187.94 C 121.15 188.76 121.39 189.52 121.63 190.13 C 121.76 190.47 121.92 190.79 122.08 191.11 L 114.32 191.13 C 114.50 190.82 114.66 190.47 114.79 190.13 C 115.03 189.52 115.27 188.68 115.27 187.83 L 115.27 171.02 C 115.27 169.72 114.74 168.56 114.47 168.01 L 114.32 167.75 L 122.08 167.75 Z"
+                style={{
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                  transitionDelay: '320ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(5px)',
+                }}
+              />
+              <path
+                d="M 140.50 167.75 L 148.26 167.75 C 148.08 168.06 147.92 168.41 147.79 168.75 C 147.55 169.36 147.34 170.17 147.34 171.02 L 147.34 187.94 C 147.34 188.76 147.58 189.52 147.81 190.13 C 147.95 190.47 148.10 190.79 148.26 191.11 L 140.50 191.11 C 140.69 190.79 140.85 190.45 140.98 190.10 C 141.21 189.50 141.45 188.68 141.45 187.83 L 141.45 171.02 C 141.45 170.46 141.37 169.91 141.19 169.30 C 141.00 168.72 140.77 168.19 140.50 167.75 Z"
+                style={{
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                  transitionDelay: '340ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(5px)',
+                }}
+              />
+              <path
+                d="M 151.19 191.11 C 152.35 190.39 153.12 189.29 153.12 187.91 L 153.12 167.75 L 158.87 167.75 C 160.43 170.65 161.88 173.37 163.23 175.90 C 165.55 180.26 168.11 185.09 169.17 187.07 L 169.17 170.94 C 169.17 169.57 168.38 168.46 167.24 167.75 L 171.76 167.75 C 170.59 168.46 169.83 169.57 169.83 170.94 L 169.83 191.11 L 164.65 191.11 C 164.50 190.90 162.65 187.33 160.38 183.06 C 158.11 178.81 155.44 173.84 153.81 170.73 L 153.81 187.91 C 153.81 189.29 154.54 190.39 155.71 191.11 L 151.19 191.11 Z"
+                style={{
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                  transitionDelay: '360ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(5px)',
+                }}
+              />
+              <path
+                d="M 175.16 190.10 C 175.40 189.50 175.64 188.68 175.64 187.83 L 175.64 171.02 C 175.64 169.73 175.11 168.56 174.84 168.01 L 174.69 167.75 L 193.64 167.75 L 191.98 174.29 C 190.50 169.78 187.01 168.41 182.82 168.41 L 181.52 168.41 L 181.52 179.41 L 185.24 179.41 C 186.62 179.41 187.73 178.65 188.44 177.49 L 188.44 182.00 C 187.73 180.84 186.62 180.10 185.24 180.10 L 181.52 180.10 L 181.52 186.49 C 181.52 188.36 181.50 189.81 181.50 190.47 L 182.76 190.47 C 187.30 190.47 191.16 188.97 192.06 184.56 L 193.64 191.11 L 174.69 191.11 C 174.87 190.79 175.03 190.45 175.16 190.10 Z"
+                style={{
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                  transitionDelay: '380ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(5px)',
+                }}
+              />
+            </g>
+
+            {/* Subline: DENTAL CLINIC */}
+            <g id="intro-dental-clinic-text">
+              <path
+                d="M 48.37 210.61 C 48.37 209.27 48.12 208.09 47.63 207.06 C 47.14 206.02 46.43 205.21 45.49 204.63 C 44.56 204.05 43.42 203.76 42.07 203.76 L 38.17 203.76 L 38.17 217.51 L 42.07 217.51 C 43.44 217.51 44.59 217.20 45.52 216.59 C 46.45 215.99 47.16 215.16 47.64 214.12 C 48.13 213.08 48.37 211.91 48.37 210.61 M 35.92 219.51 L 35.92 201.76 L 42.07 201.76 C 43.97 201.76 45.56 202.15 46.83 202.94 C 48.11 203.74 49.06 204.80 49.69 206.14 C 50.33 207.49 50.64 208.97 50.64 210.61 C 50.64 212.41 50.29 213.97 49.59 215.31 C 48.89 216.64 47.90 217.67 46.62 218.41 C 45.34 219.14 43.82 219.51 42.07 219.51 L 35.92 219.51 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '360ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 54.84 212.26 L 63.74 212.26 C 63.68 211.42 63.43 210.68 63.02 210.03 C 62.60 209.39 62.07 208.89 61.42 208.53 C 60.77 208.16 60.05 207.98 59.27 207.98 C 58.50 207.98 57.79 208.16 57.14 208.53 C 56.49 208.89 55.96 209.39 55.56 210.03 C 55.15 210.68 54.91 211.42 54.84 212.26 M 59.24 219.76 C 58.26 219.76 57.36 219.58 56.56 219.22 C 55.75 218.87 55.05 218.38 54.46 217.76 C 53.86 217.14 53.41 216.42 53.08 215.61 C 52.76 214.80 52.59 213.94 52.59 213.03 C 52.59 211.81 52.88 210.69 53.44 209.68 C 54.01 208.67 54.80 207.86 55.81 207.25 C 56.81 206.64 57.97 206.33 59.27 206.33 C 60.58 206.33 61.73 206.64 62.71 207.26 C 63.68 207.88 64.44 208.69 64.98 209.70 C 65.52 210.70 65.79 211.78 65.79 212.94 C 65.79 213.10 65.79 213.26 65.78 213.42 C 65.77 213.58 65.76 213.70 65.74 213.78 L 54.92 213.78 C 54.99 214.62 55.22 215.37 55.63 216.02 C 56.04 216.67 56.57 217.18 57.22 217.55 C 57.87 217.92 58.57 218.11 59.32 218.11 C 60.12 218.11 60.87 217.91 61.58 217.51 C 62.29 217.11 62.78 216.58 63.04 215.93 L 64.94 216.46 C 64.66 217.09 64.24 217.66 63.68 218.16 C 63.12 218.66 62.46 219.05 61.71 219.33 C 60.95 219.61 60.13 219.76 59.24 219.76 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '375ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 79.57 219.51 L 77.37 219.51 L 77.37 212.27 C 77.37 210.90 77.16 209.90 76.73 209.26 C 76.31 208.62 75.66 208.31 74.79 208.31 C 74.19 208.31 73.60 208.45 73.01 208.75 C 72.41 209.05 71.89 209.45 71.43 209.95 C 70.97 210.45 70.64 211.03 70.44 211.69 L 70.44 219.51 L 68.24 219.51 L 68.24 206.53 L 70.24 206.53 L 70.24 209.33 C 70.59 208.72 71.04 208.19 71.59 207.75 C 72.14 207.30 72.77 206.95 73.47 206.70 C 74.17 206.46 74.90 206.33 75.67 206.33 C 76.42 206.33 77.05 206.47 77.56 206.74 C 78.06 207.01 78.46 207.39 78.76 207.88 C 79.05 208.37 79.26 208.94 79.38 209.61 C 79.51 210.27 79.57 210.99 79.57 211.77 L 79.57 219.51 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '390ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 89.62 218.93 C 89.43 219.02 89.18 219.12 88.87 219.26 C 88.55 219.39 88.18 219.51 87.77 219.61 C 87.35 219.71 86.91 219.76 86.44 219.76 C 85.91 219.76 85.42 219.66 84.97 219.47 C 84.52 219.28 84.16 218.98 83.89 218.57 C 83.63 218.16 83.49 217.65 83.49 217.03 L 83.49 208.26 L 81.72 208.26 L 81.72 206.53 L 83.49 206.53 L 83.49 202.18 L 85.69 202.18 L 85.69 206.53 L 88.62 206.53 L 88.62 208.26 L 85.69 208.26 L 85.69 216.36 C 85.73 216.82 85.89 217.17 86.17 217.39 C 86.45 217.62 86.79 217.73 87.17 217.73 C 87.60 217.73 88.00 217.66 88.37 217.51 C 88.74 217.36 88.98 217.25 89.09 217.18 L 89.62 218.93 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '405ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 99.14 216.67 C 99.34 216.44 99.50 216.21 99.62 215.97 C 99.73 215.73 99.79 215.52 99.79 215.36 L 99.79 213.75 C 99.28 213.55 98.73 213.40 98.17 213.29 C 97.60 213.19 97.04 213.13 96.49 213.13 C 95.38 213.13 94.47 213.35 93.78 213.79 C 93.09 214.23 92.74 214.82 92.74 215.58 C 92.74 215.99 92.86 216.40 93.08 216.78 C 93.31 217.17 93.64 217.49 94.08 217.74 C 94.52 217.98 95.07 218.11 95.72 218.11 C 96.40 218.11 97.05 217.97 97.67 217.70 C 98.28 217.43 98.78 217.08 99.14 216.67 M 90.64 215.76 C 90.64 214.93 90.88 214.21 91.36 213.61 C 91.83 213.00 92.48 212.54 93.32 212.20 C 94.15 211.87 95.12 211.71 96.22 211.71 C 96.80 211.71 97.42 211.75 98.07 211.84 C 98.72 211.94 99.29 212.07 99.79 212.26 L 99.79 211.31 C 99.79 210.33 99.49 209.55 98.89 208.98 C 98.29 208.42 97.44 208.13 96.34 208.13 C 95.63 208.13 94.94 208.26 94.28 208.52 C 93.62 208.78 92.93 209.15 92.19 209.63 L 91.39 208.08 C 92.24 207.50 93.09 207.06 93.94 206.77 C 94.79 206.48 95.68 206.33 96.59 206.33 C 98.26 206.33 99.58 206.79 100.54 207.71 C 101.51 208.63 101.99 209.90 101.99 211.54 L 101.99 217.01 C 101.99 217.28 102.05 217.47 102.16 217.60 C 102.26 217.72 102.44 217.79 102.69 217.81 L 102.69 219.51 C 102.48 219.54 102.29 219.57 102.13 219.58 C 101.97 219.60 101.84 219.61 101.74 219.61 C 101.23 219.61 100.84 219.47 100.58 219.18 C 100.32 218.90 100.18 218.60 100.14 218.28 L 100.09 217.46 C 99.53 218.19 98.78 218.76 97.87 219.16 C 96.95 219.56 96.04 219.76 95.14 219.76 C 94.28 219.76 93.50 219.58 92.82 219.22 C 92.13 218.87 91.60 218.39 91.22 217.78 C 90.83 217.18 90.64 216.50 90.64 215.76 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '420ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 105.57 201.26 L 107.77 201.26 L 107.77 216.20 C 107.77 216.92 107.87 217.36 108.07 217.53 C 108.27 217.70 108.51 217.78 108.79 217.78 C 109.14 217.78 109.48 217.74 109.79 217.67 C 110.11 217.59 110.38 217.52 110.59 217.43 L 110.94 219.23 C 110.58 219.38 110.14 219.51 109.64 219.61 C 109.14 219.71 108.70 219.76 108.32 219.76 C 107.47 219.76 106.80 219.51 106.30 219.03 C 105.81 218.54 105.57 217.87 105.57 217.00 L 105.57 201.26 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '435ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 117.44 210.48 C 117.44 209.40 117.63 208.34 118.00 207.29 C 118.38 206.25 118.93 205.30 119.66 204.44 C 120.38 203.59 121.27 202.90 122.32 202.39 C 123.37 201.89 124.56 201.63 125.89 201.63 C 127.48 201.63 128.83 201.99 129.97 202.72 C 131.10 203.44 131.94 204.37 132.49 205.51 L 130.72 206.66 C 130.37 205.91 129.92 205.31 129.38 204.87 C 128.84 204.43 128.26 204.11 127.63 203.93 C 127.01 203.75 126.39 203.66 125.79 203.66 C 124.81 203.66 123.94 203.86 123.18 204.26 C 122.42 204.66 121.78 205.19 121.27 205.86 C 120.75 206.52 120.36 207.27 120.11 208.09 C 119.85 208.92 119.72 209.75 119.72 210.58 C 119.72 211.50 119.87 212.38 120.18 213.23 C 120.49 214.08 120.92 214.83 121.47 215.48 C 122.02 216.13 122.67 216.65 123.42 217.03 C 124.17 217.42 124.98 217.61 125.87 217.61 C 126.48 217.61 127.12 217.50 127.77 217.28 C 128.42 217.06 129.03 216.73 129.59 216.27 C 130.16 215.81 130.61 215.21 130.94 214.48 L 132.82 215.51 C 132.45 216.39 131.88 217.14 131.12 217.76 C 130.35 218.37 129.50 218.84 128.55 219.16 C 127.61 219.47 126.68 219.63 125.77 219.63 C 124.55 219.63 123.43 219.37 122.42 218.84 C 121.40 218.32 120.52 217.62 119.78 216.74 C 119.04 215.87 118.46 214.89 118.05 213.79 C 117.65 212.70 117.44 211.60 117.44 210.48 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '450ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 135.34 201.26 L 137.54 201.26 L 137.54 216.20 C 137.54 216.92 137.64 217.36 137.84 217.53 C 138.04 217.70 138.28 217.78 138.57 217.78 C 138.92 217.78 139.25 217.74 139.57 217.67 C 139.88 217.59 140.15 217.52 140.37 217.43 L 140.72 219.23 C 140.35 219.38 139.92 219.51 139.42 219.61 C 138.92 219.71 138.48 219.76 138.09 219.76 C 137.24 219.76 136.57 219.51 136.08 219.03 C 135.59 218.54 135.34 217.87 135.34 217.00 L 135.34 201.26 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '465ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 142.44 206.46 h 2.20 v 13.05 h -2.20 Z M 142.44 201.26 h 2.20 v 2.75 h -2.20 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '480ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 159.52 219.51 L 157.32 219.51 L 157.32 212.27 C 157.32 210.90 157.10 209.90 156.68 209.26 C 156.25 208.62 155.61 208.31 154.74 208.31 C 154.14 208.31 153.55 208.45 152.95 208.75 C 152.36 209.05 151.84 209.45 151.38 209.95 C 150.92 210.45 150.59 211.03 150.39 211.69 L 150.39 219.51 L 148.19 219.51 L 148.19 206.53 L 150.19 206.53 L 150.19 209.33 C 150.54 208.72 150.99 208.19 151.54 207.75 C 152.09 207.30 152.72 206.95 153.42 206.70 C 154.12 206.46 154.85 206.33 155.62 206.33 C 156.37 206.33 157.00 206.47 157.50 206.74 C 158.01 207.01 158.41 207.39 158.70 207.88 C 159.00 208.37 159.20 208.94 159.33 209.61 C 159.45 210.27 159.52 210.99 159.52 211.77 L 159.52 219.51 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '495ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 162.94 206.46 h 2.20 v 13.05 h -2.20 Z M 162.94 201.26 h 2.20 v 2.75 h -2.20 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '510ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+              <path
+                d="M 174.47 219.76 C 173.48 219.76 172.59 219.58 171.78 219.22 C 170.97 218.87 170.27 218.38 169.68 217.75 C 169.09 217.12 168.63 216.40 168.31 215.59 C 167.98 214.78 167.82 213.92 167.82 213.01 C 167.82 211.78 168.09 210.67 168.64 209.66 C 169.19 208.65 169.97 207.84 170.97 207.24 C 171.97 206.63 173.12 206.33 174.44 206.33 C 175.72 206.33 176.85 206.62 177.81 207.19 C 178.76 207.77 179.47 208.54 179.94 209.51 L 177.79 210.18 C 177.46 209.57 176.99 209.09 176.39 208.74 C 175.79 208.40 175.12 208.23 174.39 208.23 C 173.59 208.23 172.86 208.44 172.20 208.85 C 171.55 209.26 171.03 209.83 170.64 210.55 C 170.26 211.26 170.07 212.08 170.07 213.01 C 170.07 213.91 170.26 214.74 170.65 215.47 C 171.05 216.20 171.57 216.78 172.23 217.21 C 172.89 217.64 173.62 217.86 174.42 217.86 C 174.93 217.86 175.43 217.77 175.90 217.58 C 176.38 217.40 176.80 217.15 177.15 216.84 C 177.51 216.54 177.76 216.20 177.89 215.83 L 180.04 216.48 C 179.78 217.11 179.37 217.68 178.83 218.17 C 178.29 218.66 177.65 219.05 176.90 219.33 C 176.16 219.61 175.35 219.76 174.47 219.76 Z"
+                style={{
+                  transition: 'opacity 0.55s ease-out, transform 0.55s ease-out',
+                  transitionDelay: '525ms',
+                  opacity: isLogoActive ? 1 : 0,
+                  transform: isLogoActive ? 'translateY(0)' : 'translateY(3px)',
+                }}
+              />
+            </g>
+          </svg>
+        </div>
+
+        {/* Phase 2: Tagline Reveal underneath logo */}
+        <div
+          className={`mt-7 sm:mt-8 flex flex-col items-center transform transition-all duration-700 ease-out ${
+            isTaglineActive
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-3'
+          }`}
+        >
+          {/* Subtle gold/brown decorative divider */}
+          <div className="w-14 h-[1.5px] bg-[#391F13]/25 rounded-full mb-3" />
+
+          {/* Official Clinic Tagline */}
+          <p className="font-headline italic text-lg sm:text-xl md:text-2xl font-normal text-[#391F13] tracking-wider leading-snug">
+            “Your Smile, Our Priority”
+          </p>
+        </div>
+
+      </div>
+
+      {/* Subtle skip button */}
+      <button
+        onClick={handleDismiss}
+        className="absolute bottom-6 right-6 text-xs text-[#391F13]/40 hover:text-[#391F13] transition-colors px-3 py-1 rounded-full border border-[#391F13]/10 hover:border-[#391F13]/30"
+        aria-label="Skip intro animation"
+      >
+        Skip ✕
+      </button>
+    </div>
+  );
+};
