@@ -52,19 +52,16 @@ export const Footer: React.FC = () => {
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-white transition-colors">About Our Clinic</Link>
+                <Link to="/doctors" className="hover:text-white transition-colors">Our Doctors</Link>
               </li>
               <li>
-                <Link to="/treatments" className="hover:text-white transition-colors">All Treatments</Link>
+                <Link to="/treatments" className="hover:text-white transition-colors">Treatments</Link>
               </li>
               <li>
-                <Link to="/doctors" className="hover:text-white transition-colors">Our Lead Doctors</Link>
+                <Link to="/gallery" className="hover:text-white transition-colors">Smile Gallery</Link>
               </li>
               <li>
-                <Link to="/gallery" className="hover:text-white transition-colors">Smile Transformations</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-white transition-colors">Directions & Contact</Link>
+                <Link to="/contact" className="hover:text-white transition-colors">Contact & Location</Link>
               </li>
               <li>
                 <Link to="/book-appointment" className="hover:text-white font-bold text-white underline underline-offset-4">Book Consultation</Link>

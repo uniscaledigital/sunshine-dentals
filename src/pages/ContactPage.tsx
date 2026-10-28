@@ -149,14 +149,6 @@ export const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 border border-surface-container">
-              <h3 className="font-headline font-bold text-base text-on-surface mb-2">
-                Directions & Landmark Guide
-              </h3>
-              <p className="text-xs text-secondary leading-relaxed">
-                Located right in Hanamkonda Central. Ground floor accessibility with wheel-chair friendly ramps. Dedicated patient two-wheeler and four-wheeler parking available immediately in front of the clinic complex.
-              </p>
-            </div>
           </div>
 
         </div>

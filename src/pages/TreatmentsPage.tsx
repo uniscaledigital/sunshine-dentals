@@ -22,9 +22,6 @@ export const TreatmentsPage: React.FC = () => {
           <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
             Comprehensive Dental Treatments
           </h1>
-          <p className="text-base text-secondary mt-3 leading-relaxed">
-            Every procedure at Sunshine Dental is performed with sterile hospital protocols, digital chairside imaging, and customized pain-free anesthetic management.
-          </p>
 
           {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 mt-8">

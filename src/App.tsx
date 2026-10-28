@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { LogoIntro } from './components/LogoIntro';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -7,7 +7,6 @@ import { MobileActionBar } from './components/MobileActionBar';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 
 import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
 import { TreatmentsPage } from './pages/TreatmentsPage';
 import { DoctorsPage } from './pages/DoctorsPage';
 import { DoctorBhanujaPage } from './pages/DoctorBhanujaPage';
@@ -39,7 +38,7 @@ export const App: React.FC = () => {
         <main className="flex-1 pb-16 md:pb-0">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
+            <Route path="/about" element={<Navigate to="/" replace />} />
             <Route path="/treatments" element={<TreatmentsPage />} />
             <Route path="/doctors" element={<DoctorsPage />} />
             <Route path="/doctors/bhanuja" element={<DoctorBhanujaPage />} />

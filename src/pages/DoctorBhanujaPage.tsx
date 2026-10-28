@@ -46,7 +46,7 @@ export const DoctorBhanujaPage: React.FC = () => {
             </span>
             <span className="inline-flex items-center gap-1 bg-surface-container text-on-surface px-3 py-1 rounded-full text-xs font-bold">
               <span className="material-symbols-outlined text-[16px]">badge</span>
-              Registration: {doctor.registrationNumber}
+              Registration No.: {doctor.registrationNumber}
             </span>
             <span className="inline-flex items-center gap-1 bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold">
               <span className="material-symbols-outlined text-[16px]">event_available</span>

@@ -26,7 +26,7 @@ export interface ClinicalCase {
   id: string;
   title: string;
   category: string;
-  description: string;
+  description?: string;
   image: string;
   tag: string;
 }
@@ -62,7 +62,7 @@ export const doctors: Doctor[] = [
     name: "Dr. Bhanuja",
     role: "Lead Dental Surgeon",
     qualification: "BDS | Lead Dental Surgeon",
-    registrationNumber: "TS-DENT-8419",
+    registrationNumber: "A-6605",
     focus: "Painless tooth extractions, conservative operative dentistry, and restorative root therapies.",
     quote: "Dental wellness should never begin with dread. My focus is on creating a peaceful, calm clinical environment where gentle technique and clear communication remove all anxiety from your procedure.",
     bio: "Dr. Bhanuja spearheads the primary surgical and restorative wing at Sunshine Dental Clinic, bringing comprehensive diagnostic precision and empathetic chairside reassurance to the Warangal-Hanamkonda community. With an acute understanding of dental apprehension, she has pioneered anxiety-conscious treatment protocols where patients feel thoroughly heard, educated, and comfortable prior to any clinical intervention.",
@@ -81,7 +81,7 @@ export const doctors: Doctor[] = [
     name: "Dr. Madhuri",
     role: "Aesthetic & Endo Specialist",
     qualification: "BDS, MDS | Aesthetic & Endodontic Specialist",
-    registrationNumber: "TS-DDC-8492",
+    registrationNumber: "A-10922",
     focus: "Smile designing, cosmetic restorations, clear aligners, and painless single-sitting endodontics.",
     quote: "Every smile has a unique anatomical balance. By combining microscopic endodontics with precision aesthetic smile architecture, we preserve your natural teeth while achieving breathtaking aesthetic harmony.",
     bio: "Dr. Madhuri brings advanced microscopic precision and aesthetic craftsmanship to Sunshine Dental Clinic. Recognized for her compassionate demeanor and meticulous attention to biological conservation, she leads our specialized Aesthetic & Endodontics Suite in Hanamkonda with a vision centered on natural, radiant smiles. Her masteries bridge complex root canal therapies under magnification with cutting-edge cosmetic smile makeovers.",
@@ -189,7 +189,6 @@ export const clinicalGallery: ClinicalCase[] = [
     id: "case-1",
     title: "Midline Diastema Aesthetic Closure",
     category: "Cosmetic & Veneers",
-    description: "Closing noticeable front gap with custom aesthetic porcelain restorations, creating a unified natural smile line.",
     image: "/images/clinical/case-1-midline-diastema-closure.jpg",
     tag: "Before & After"
   },
@@ -197,7 +196,6 @@ export const clinicalGallery: ClinicalCase[] = [
     id: "case-2",
     title: "Deep Ultrasonic Scaling & Stain Removal",
     category: "Preventive Periodontics",
-    description: "Removal of subgingival calculus, tobacco staining, and inflamed plaque margins in a single gentle session.",
     image: "/images/clinical/case-2-ultrasonic-deep-scaling.jpg",
     tag: "Before & After"
   },
@@ -205,7 +203,6 @@ export const clinicalGallery: ClinicalCase[] = [
     id: "case-3",
     title: "Fractured Incisor Crown Restoration",
     category: "Restorative Dentistry",
-    description: "Emergency repair of a fractured anterior incisor, color-matched seamlessly to surrounding natural dentition.",
     image: "/images/clinical/case-4-fractured-incisor-crown-restoration.jpg",
     tag: "Before & After"
   },
@@ -213,7 +210,6 @@ export const clinicalGallery: ClinicalCase[] = [
     id: "case-4",
     title: "Orthodontic Crowding & Alignment",
     category: "Clear Aligners",
-    description: "Gradual arch expansion and tooth alignment over 7 months without bulky metal wires or extractions.",
     image: "/images/clinical/case-8-anterior-malocclusion-correction.jpg",
     tag: "Before & After"
   },
@@ -221,7 +217,6 @@ export const clinicalGallery: ClinicalCase[] = [
     id: "case-5",
     title: "Anterior Spacing & Bite Harmony",
     category: "Smile Architecture",
-    description: "Comprehensive anterior correction resolving both functional speech impediment and cosmetic aesthetic concerns.",
     image: "/images/clinical/case-7-anterior-spacing-closure.jpg",
     tag: "Before & After"
   },
@@ -229,7 +224,6 @@ export const clinicalGallery: ClinicalCase[] = [
     id: "case-6",
     title: "Occlusal Stain & Plaque Cleanse",
     category: "Preventive Care",
-    description: "Full occlusal polishing protecting deep fissures from opportunistic caries formation.",
     image: "/images/clinical/case-9-occlusal-stain-removal.jpg",
     tag: "Before & After"
   }
@@ -255,5 +249,49 @@ export const clinicPhotos = [
     title: "Sterilized Operatory Suite",
     subtitle: "Modern ergonomic dental chairs with medical-grade air filtration and gentle lighting",
     image: "/images/stitch/stitch_img_8.jpg"
+  }
+];
+
+export interface GoogleReview {
+  id: string;
+  name: string;
+  avatarLetter: string;
+  avatarBg: string;
+  rating: number;
+  timeAgo: string;
+  reviewerMeta: string;
+  reviewText: string;
+}
+
+export const googleReviews: GoogleReview[] = [
+  {
+    id: "review-1",
+    name: "Athmakuri Sumalatha",
+    avatarLetter: "A",
+    avatarBg: "#7B1FA2",
+    rating: 5,
+    timeAgo: "3 months ago",
+    reviewerMeta: "4 reviews · 1 photo",
+    reviewText: "We had a wonderful experience at Sunshine Dental Hospital. My 5-year-old daughter had cavities, and the doctors treated her with great care, patience, and kindness. They explained everything clearly and made her feel comfortable throughout ..."
+  },
+  {
+    id: "review-2",
+    name: "Omprakash Kumbarakar",
+    avatarLetter: "O",
+    avatarBg: "#0288D1",
+    rating: 5,
+    timeAgo: "2 months ago",
+    reviewerMeta: "2 reviews",
+    reviewText: "Most affordable and best dental clinic in hanumakonda done with root canal treatment which was painless and dr. Bhanuja and dr. Madhuri was so patient and explained and done treatment in a comfortable way. I highly recommend it"
+  },
+  {
+    id: "review-3",
+    name: "Anjali M",
+    avatarLetter: "A",
+    avatarBg: "#E65100",
+    rating: 5,
+    timeAgo: "1 year ago",
+    reviewerMeta: "1 review",
+    reviewText: "Yesterday, I visited Sunshine Dental Clinic to have my wisdom tooth removed. The treatment was completely painless, and the doctors did a great job. They treated me with full care and made me feel very comfortable as a patient. Highly recommended their service."
   }
 ];

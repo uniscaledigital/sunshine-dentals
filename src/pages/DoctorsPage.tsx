@@ -13,11 +13,8 @@ export const DoctorsPage: React.FC = () => {
             Clinical Faculty & Specialists
           </span>
           <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
-            Our Lead Dental Surgeons
+            Our Doctors
           </h1>
-          <p className="text-base text-secondary mt-3 leading-relaxed">
-            Meet the primary practitioners behind Sunshine Dental Clinic. Practicing with full surgical precision, compassionate bed/chairside bedside manner, and specialized endodontic and aesthetic qualifications.
-          </p>
         </div>
       </section>
 
@@ -39,7 +36,7 @@ export const DoctorsPage: React.FC = () => {
                   />
                   <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-bold text-primary shadow-sm flex items-center gap-1.5">
                     <span className="material-symbols-outlined text-[16px]">verified</span>
-                    {doctor.registrationNumber}
+                    <span>Registration No.: {doctor.registrationNumber}</span>
                   </div>
                 </div>
 

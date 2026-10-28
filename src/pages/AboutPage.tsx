@@ -88,6 +88,7 @@ export const AboutPage: React.FC = () => {
                       <h3 className="font-headline font-bold text-xl text-on-surface">{doc.name}</h3>
                       <p className="text-xs font-semibold text-primary">{doc.role}</p>
                       <p className="text-[11px] text-secondary">{doc.qualification}</p>
+                      <p className="text-[11px] font-bold text-primary mt-0.5">Registration No.: {doc.registrationNumber}</p>
                     </div>
                   </div>
                   <p className="text-xs text-secondary leading-relaxed mb-4">

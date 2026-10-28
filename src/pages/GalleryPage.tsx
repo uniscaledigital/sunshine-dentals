@@ -58,9 +58,6 @@ export const GalleryPage: React.FC = () => {
       <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-6">
-            <span className="text-xs font-bold text-primary uppercase tracking-wider">
-              Interactive Slider Comparison
-            </span>
             <h2 className="font-headline font-bold text-2xl text-on-surface mt-1">
               Slide to Compare Real Orthodontic Results
             </h2>
@@ -69,7 +66,6 @@ export const GalleryPage: React.FC = () => {
             beforeImage="/images/clinical/case-5-orthodontic-crowding-before.jpg"
             afterImage="/images/clinical/case-5-orthodontic-crowding-after.jpg"
             title="Severe Anterior Crowding Resolved with Clear Aligners"
-            subtitle="7-month discreet aligner journey without invasive premolar extractions."
             beforeLabel="Pre-Treatment Crowding"
             afterLabel="Completed Smile Alignment"
           />
@@ -123,9 +119,11 @@ export const GalleryPage: React.FC = () => {
                   <h3 className="font-headline font-bold text-lg text-on-surface mb-2 group-hover:text-primary transition-colors">
                     {c.title}
                   </h3>
-                  <p className="text-xs text-secondary leading-relaxed">
-                    {c.description}
-                  </p>
+                  {c.description && (
+                    <p className="text-xs text-secondary leading-relaxed">
+                      {c.description}
+                    </p>
+                  )}
                 </div>
                 <div className="mt-4 pt-3 border-t border-surface-container-low flex items-center justify-between text-xs font-bold text-primary">
                   <span className="flex items-center gap-1">
@@ -224,9 +222,11 @@ export const GalleryPage: React.FC = () => {
             <h3 className="font-headline font-bold text-base sm:text-lg">
               {activeCase.title}
             </h3>
-            <p className="text-xs sm:text-sm text-white/80 mt-1 leading-relaxed">
-              {activeCase.description}
-            </p>
+            {activeCase.description && (
+              <p className="text-xs sm:text-sm text-white/80 mt-1 leading-relaxed">
+                {activeCase.description}
+              </p>
+            )}
           </div>
         </div>
       )}
