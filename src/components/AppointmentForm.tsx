@@ -294,10 +294,6 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
             )}
           </button>
         </div>
-
-        <p className="text-[11px] text-center text-secondary">
-          No advance payment required. The clinic staff will contact you directly to confirm availability.
-        </p>
       </div>
     </form>
   );

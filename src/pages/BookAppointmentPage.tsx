@@ -19,9 +19,6 @@ export const BookAppointmentPage: React.FC = () => {
           <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
             Schedule Your Dental Visit
           </h1>
-          <p className="text-base text-secondary mt-3 leading-relaxed">
-            Reserve your consultation with Dr. Bhanuja or Dr. Madhuri. We maintain strict time slots to minimize waiting time and uphold immaculate sterilization protocols between appointments.
-          </p>
         </div>
       </section>
 
