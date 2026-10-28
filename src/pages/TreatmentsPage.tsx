@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { services } from '../config/clinicData';
 
 export const TreatmentsPage: React.FC = () => {
@@ -48,7 +47,7 @@ export const TreatmentsPage: React.FC = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 pb-12">
+      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredServices.map((service) => (
             <div
@@ -82,7 +81,7 @@ export const TreatmentsPage: React.FC = () => {
                 </div>
 
                 {/* Key Clinical Features */}
-                <div className="mb-6">
+                <div>
                   <p className="text-xs font-bold text-on-surface uppercase tracking-wider mb-2.5">
                     Treatment Highlights:
                   </p>
@@ -95,16 +94,6 @@ export const TreatmentsPage: React.FC = () => {
                     ))}
                   </ul>
                 </div>
-              </div>
-
-              <div className="pt-4 border-t border-surface-container">
-                <Link
-                  to={`/book-appointment?treatment=${service.id}`}
-                  className="w-full text-center py-3.5 px-4 rounded-xl font-bold text-xs bg-primary hover:bg-primary-container text-white shadow-md transition-all flex items-center justify-center gap-2 transform active:scale-95"
-                >
-                  <span className="material-symbols-outlined text-[18px]">calendar_add_on</span>
-                  <span>Consult Specialist for {service.name}</span>
-                </Link>
               </div>
 
             </div>
