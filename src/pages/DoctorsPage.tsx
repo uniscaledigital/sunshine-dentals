@@ -82,20 +82,13 @@ export const DoctorsPage: React.FC = () => {
               </div>
 
               {/* Actions */}
-              <div className="p-6 sm:p-8 pt-0 flex flex-col sm:flex-row items-center gap-3">
+              <div className="p-6 sm:p-8 pt-0">
                 <Link
                   to={`/doctors/${doctor.id}`}
-                  className="w-full sm:flex-1 text-center py-3.5 px-4 rounded-xl font-bold text-xs bg-primary hover:bg-primary-container text-white shadow-md transition-all flex items-center justify-center gap-1.5"
+                  className="w-full text-center py-3.5 px-4 rounded-xl font-bold text-xs bg-primary hover:bg-primary-container text-white shadow-md transition-all flex items-center justify-center gap-1.5"
                 >
                   <span>View Specialist Profile</span>
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </Link>
-                <Link
-                  to={`/book-appointment?doctor=${doctor.id}`}
-                  className="w-full sm:w-auto text-center py-3.5 px-5 rounded-xl font-bold text-xs border border-primary text-primary hover:bg-primary/10 transition-colors flex items-center justify-center gap-1.5"
-                >
-                  <span className="material-symbols-outlined text-[18px]">calendar_month</span>
-                  <span>Book Consultation</span>
                 </Link>
               </div>
 

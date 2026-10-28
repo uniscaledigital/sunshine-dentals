@@ -129,19 +129,13 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. CLINICAL SERVICES MATRIX (Matching Stitch 6 Cards) */}
+      {/* 3. CLINICAL SERVICES MATRIX */}
       <section id="treatments-section" className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
-              Comprehensive Oral Solutions
-            </span>
-            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
+            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface">
               Dental Treatments & Services
             </h2>
-            <p className="text-sm text-secondary mt-1 max-w-xl">
-              Specialized clinical care utilizing microscope-guided endodontics, invisible aligners, cosmetic smile designing, and gentle surgical protocols.
-            </p>
           </div>
           <Link
             to="/treatments"
@@ -152,45 +146,25 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service) => (
-            <div
+            <Link
+              to="/treatments"
               key={service.id}
-              className="bg-white rounded-2xl p-6 border border-surface-container hover:border-primary/40 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+              className="bg-white rounded-2xl p-5 border border-surface-container hover:border-primary/50 hover:shadow-md transition-all duration-300 flex items-center justify-between group"
             >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="text-[11px] font-bold text-primary uppercase bg-primary/10 px-2.5 py-1 rounded-md">
-                    {service.category}
-                  </span>
-                  <div className="w-10 h-10 rounded-lg bg-surface-container-low text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[22px]">{service.icon}</span>
-                  </div>
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-surface-container-low text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
+                  <span className="material-symbols-outlined text-[22px]">{service.icon}</span>
                 </div>
-
-                <h3 className="font-headline font-bold text-xl text-on-surface mb-2 group-hover:text-primary transition-colors">
+                <h3 className="font-headline font-bold text-base sm:text-lg text-on-surface group-hover:text-primary transition-colors">
                   {service.name}
                 </h3>
-                <p className="text-xs text-secondary leading-relaxed mb-4">
-                  {service.description}
-                </p>
-
-                <div className="bg-surface-container-low/70 rounded-xl p-3 mb-5 border border-surface-container">
-                  <span className="text-[11px] font-bold text-primary flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-[16px]">bolt</span>
-                    {service.keyTrigger}
-                  </span>
-                </div>
               </div>
-
-              <Link
-                to={`/book-appointment?treatment=${service.id}`}
-                className="w-full text-center py-2.5 px-4 rounded-xl font-bold text-xs bg-surface hover:bg-primary hover:text-white text-on-surface border border-outline-variant/60 group-hover:border-primary transition-all flex items-center justify-center gap-1.5"
-              >
-                <span>Consult Specialist</span>
-                <span className="material-symbols-outlined text-[16px]">chevron_right</span>
-              </Link>
-            </div>
+              <span className="material-symbols-outlined text-secondary/50 group-hover:text-primary group-hover:translate-x-1 transition-all text-[18px]">
+                arrow_forward
+              </span>
+            </Link>
           ))}
         </div>
       </section>
@@ -251,20 +225,13 @@ export const HomePage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-6 pt-0 flex items-center gap-3">
+                <div className="p-6 pt-0">
                   <Link
                     to={`/doctors/${doctor.id}`}
-                    className="flex-1 text-center py-3 px-4 rounded-xl font-bold text-xs bg-primary hover:bg-primary-container text-white shadow-sm transition-all flex items-center justify-center gap-1.5"
+                    className="w-full text-center py-3 px-4 rounded-xl font-bold text-xs bg-primary hover:bg-primary-container text-white shadow-sm transition-all flex items-center justify-center gap-1.5"
                   >
                     <span>View Specialist Profile</span>
                     <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                  </Link>
-                  <Link
-                    to={`/book-appointment?doctor=${doctor.id}`}
-                    className="py-3 px-3 rounded-xl font-bold text-xs border border-primary text-primary hover:bg-primary/10 transition-colors"
-                    title={`Book with ${doctor.name}`}
-                  >
-                    <span className="material-symbols-outlined text-[18px]">calendar_add_on</span>
                   </Link>
                 </div>
 

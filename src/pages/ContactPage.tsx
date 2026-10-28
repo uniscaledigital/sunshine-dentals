@@ -1,15 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { clinicInfo } from '../config/clinicData';
 
 export const ContactPage: React.FC = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [query, setQuery] = useState({ name: '', phone: '', message: '' });
-
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!query.name || !query.phone) return;
-    setSubmitted(true);
-  };
 
   return (
     <div className="w-full flex flex-col gap-12 lg:gap-16">
@@ -124,57 +116,7 @@ export const ContactPage: React.FC = () => {
 
             </div>
 
-            {/* Quick Query Form */}
-            <div className="bg-surface-container-low rounded-3xl p-6 sm:p-8 border border-surface-container">
-              <h3 className="font-headline font-bold text-lg text-on-surface mb-2">
-                Send a Message to Front Desk
-              </h3>
-              <p className="text-xs text-secondary mb-4">
-                Have a quick clinical question or insurance query? Leave a message below.
-              </p>
 
-              {submitted ? (
-                <div className="p-4 bg-green-50 border border-green-200 rounded-xl text-green-800 text-xs">
-                  <p className="font-bold flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-[18px]">check_circle</span>
-                    Message Sent Successfully!
-                  </p>
-                  <p className="mt-1">Our care coordinator will call or message you back shortly.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSendMessage} className="space-y-3">
-                  <input
-                    type="text"
-                    required
-                    placeholder="Your Name"
-                    value={query.name}
-                    onChange={(e) => setQuery({ ...query, name: e.target.value })}
-                    className="w-full px-4 py-2.5 text-xs rounded-xl border border-outline-variant/60 bg-white outline-none focus:border-primary"
-                  />
-                  <input
-                    type="tel"
-                    required
-                    placeholder="Phone Number"
-                    value={query.phone}
-                    onChange={(e) => setQuery({ ...query, phone: e.target.value })}
-                    className="w-full px-4 py-2.5 text-xs rounded-xl border border-outline-variant/60 bg-white outline-none focus:border-primary"
-                  />
-                  <textarea
-                    rows={3}
-                    placeholder="Your message / query..."
-                    value={query.message}
-                    onChange={(e) => setQuery({ ...query, message: e.target.value })}
-                    className="w-full px-4 py-2.5 text-xs rounded-xl border border-outline-variant/60 bg-white outline-none focus:border-primary resize-none"
-                  ></textarea>
-                  <button
-                    type="submit"
-                    className="w-full py-2.5 bg-primary text-white font-bold text-xs rounded-xl shadow-sm hover:bg-primary-container transition-all"
-                  >
-                    Submit Query
-                  </button>
-                </form>
-              )}
-            </div>
 
           </div>
 
