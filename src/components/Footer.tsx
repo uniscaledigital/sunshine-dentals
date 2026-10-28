@@ -5,8 +5,8 @@ import { clinicInfo, services, doctors } from '../config/clinicData';
 export const Footer: React.FC = () => {
   return (
     <footer className="w-full bg-primary text-white border-t border-primary/20 shadow-2xl">
-      <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
+      <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 py-10 sm:py-12 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
           
           {/* Col 1: Brand & Identity */}
           <div className="lg:col-span-2 flex flex-col gap-4">
@@ -124,7 +124,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Legal Bar */}
-        <div className="mt-12 pt-6 border-t border-white/10 text-center text-xs text-white/70">
+        <div className="mt-8 sm:mt-12 pt-6 border-t border-white/10 text-center text-[10px] sm:text-xs text-white/70">
           <p>© {new Date().getFullYear()} Sunshine Dental Clinic. All rights reserved. Hanamkonda, Telangana.</p>
         </div>
 

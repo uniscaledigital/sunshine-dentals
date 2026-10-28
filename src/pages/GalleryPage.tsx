@@ -41,21 +41,21 @@ export const GalleryPage: React.FC = () => {
       
       {/* Header */}
       <section className="bg-surface-container-low py-12 lg:py-16 border-b border-surface-container">
-        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 text-center max-w-3xl">
+        <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 text-center max-w-3xl">
           <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
             Clinical Proof & Smile Architecture
           </span>
-          <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
+          <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
             Real Patient Smile Transformations
           </h1>
-          <p className="text-base text-secondary mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-secondary mt-3 leading-relaxed">
             All cases showcased below represent actual procedures diagnosed and completed by Dr. Bhanuja and Dr. Madhuri at Sunshine Dental Clinic in Hanamkonda.
           </p>
         </div>
       </section>
 
       {/* Featured Interactive Comparison */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
+      <section className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-6">
             <h2 className="font-headline font-bold text-2xl text-on-surface mt-1">
@@ -73,7 +73,7 @@ export const GalleryPage: React.FC = () => {
       </section>
 
       {/* Grid of Verified Clinical Cases */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 pb-16">
+      <section className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 pb-16">
         <div className="mb-8">
           <h2 className="font-headline font-bold text-2xl sm:text-3xl text-on-surface">
             Documented Clinical Cases
@@ -83,7 +83,7 @@ export const GalleryPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {clinicalGallery.map((c, index) => (
             <div
               key={c.id}
@@ -145,7 +145,7 @@ export const GalleryPage: React.FC = () => {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6 animate-fade-in"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col justify-between p-3 sm:p-4 md:p-6 animate-fade-in"
           onClick={() => setActiveImageIndex(null)}
         >
           {/* Top Bar */}
@@ -185,18 +185,18 @@ export const GalleryPage: React.FC = () => {
                     : null
                 )
               }
-              className="absolute left-2 sm:left-6 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-xl transition-all hover:scale-105"
+              className="absolute left-1 sm:left-2 md:left-6 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-xl transition-all hover:scale-105"
               aria-label="Previous case image"
             >
               <span className="material-symbols-outlined text-[24px]">chevron_left</span>
             </button>
 
             {/* Full Image */}
-            <div className="max-w-4xl max-h-[72vh] flex items-center justify-center p-2">
+            <div className="max-w-4xl max-h-[65vh] sm:max-h-[72vh] flex items-center justify-center p-1 sm:p-2">
               <img
                 src={activeCase.image}
                 alt={activeCase.title}
-                className="max-h-[72vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl border border-white/15"
+                className="max-h-[65vh] sm:max-h-[72vh] w-auto max-w-full object-contain rounded-xl sm:rounded-2xl shadow-2xl border border-white/15"
               />
             </div>
 
@@ -207,7 +207,7 @@ export const GalleryPage: React.FC = () => {
                   prev !== null ? (prev + 1) % clinicalGallery.length : null
                 )
               }
-              className="absolute right-2 sm:right-6 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-xl transition-all hover:scale-105"
+              className="absolute right-1 sm:right-2 md:right-6 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-xl transition-all hover:scale-105"
               aria-label="Next case image"
             >
               <span className="material-symbols-outlined text-[24px]">chevron_right</span>

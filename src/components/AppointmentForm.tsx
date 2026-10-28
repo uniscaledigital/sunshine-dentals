@@ -105,14 +105,14 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`bg-white rounded-2xl shadow-xl border border-surface-container p-6 lg:p-8 ${className}`}
+      className={`bg-white rounded-2xl shadow-xl border border-surface-container p-4 sm:p-6 lg:p-8 ${className}`}
       id="appointment-direct-form"
     >
       <div className="mb-6">
         <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full uppercase tracking-wider">
           Single-Clinic Location • Hanamkonda
         </span>
-        <h3 className="font-headline font-bold text-2xl text-on-surface mt-2">
+        <h3 className="font-headline font-bold text-xl sm:text-2xl text-on-surface mt-2">
           Request an Appointment
         </h3>
         <p className="text-xs text-secondary mt-1">
@@ -137,7 +137,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               placeholder="e.g. Ramesh Kumar"
-              className={`w-full pl-10 pr-4 py-3 text-sm rounded-xl border ${
+              className={`w-full pl-10 pr-4 py-3 text-base sm:text-sm rounded-xl border ${
                 errors.fullName ? 'border-error bg-error-container/20' : 'border-outline-variant/60 focus:border-primary'
               } outline-none focus:ring-2 focus:ring-primary/20 transition-all`}
             />
@@ -161,7 +161,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               placeholder="e.g. 98765 43210"
-              className={`w-full pl-10 pr-4 py-3 text-sm rounded-xl border ${
+              className={`w-full pl-10 pr-4 py-3 text-base sm:text-sm rounded-xl border ${
                 errors.phone ? 'border-error bg-error-container/20' : 'border-outline-variant/60 focus:border-primary'
               } outline-none focus:ring-2 focus:ring-primary/20 transition-all`}
             />
@@ -183,7 +183,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
               required
               value={formData.treatment}
               onChange={(e) => setFormData({ ...formData, treatment: e.target.value })}
-              className={`w-full pl-10 pr-10 py-3 text-sm rounded-xl border ${
+              className={`w-full pl-10 pr-10 py-3 text-base sm:text-sm rounded-xl border ${
                 errors.treatment ? 'border-error bg-error-container/20' : 'border-outline-variant/60 focus:border-primary'
               } outline-none focus:ring-2 focus:ring-primary/20 transition-all bg-white appearance-none`}
             >
@@ -213,7 +213,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
               id="doctor-select"
               value={formData.preferredDoctor}
               onChange={(e) => setFormData({ ...formData, preferredDoctor: e.target.value })}
-              className="w-full pl-10 pr-10 py-3 text-sm rounded-xl border border-outline-variant/60 focus:border-primary outline-none focus:ring-2 focus:ring-primary/20 transition-all bg-white appearance-none"
+              className="w-full pl-10 pr-10 py-3 text-base sm:text-sm rounded-xl border border-outline-variant/60 focus:border-primary outline-none focus:ring-2 focus:ring-primary/20 transition-all bg-white appearance-none"
             >
               <option value="any">First Available Specialist</option>
               <option value="bhanuja">Dr. Bhanuja (Lead Dental Surgeon)</option>
@@ -239,7 +239,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
                 min={todayStr}
                 value={formData.preferredDate}
                 onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                className={`w-full px-4 py-3 text-sm rounded-xl border ${
+                className={`w-full px-4 py-3 text-base sm:text-sm rounded-xl border ${
                   errors.preferredDate ? 'border-error bg-error-container/20' : 'border-outline-variant/60 focus:border-primary'
                 } outline-none focus:ring-2 focus:ring-primary/20 transition-all`}
               />
@@ -257,7 +257,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
                 required
                 value={formData.preferredTime}
                 onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                className="w-full px-4 py-3 text-sm rounded-xl border border-outline-variant/60 focus:border-primary outline-none focus:ring-2 focus:ring-primary/20 transition-all bg-white appearance-none"
+                className="w-full px-4 py-3 text-base sm:text-sm rounded-xl border border-outline-variant/60 focus:border-primary outline-none focus:ring-2 focus:ring-primary/20 transition-all bg-white appearance-none"
               >
                 {timeSlots.map((time) => (
                   <option key={time} value={time}>

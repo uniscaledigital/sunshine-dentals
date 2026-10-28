@@ -8,19 +8,19 @@ export const DoctorsPage: React.FC = () => {
       
       {/* Header */}
       <section className="bg-surface-container-low py-12 lg:py-16 border-b border-surface-container">
-        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 text-center max-w-3xl">
+        <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 text-center max-w-3xl">
           <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
             Clinical Faculty & Specialists
           </span>
-          <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
+          <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
             Our Doctors
           </h1>
         </div>
       </section>
 
       {/* Doctor Directory Cards */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+      <section className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 pb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 max-w-5xl mx-auto">
           {doctors.map((doctor) => (
             <div
               key={doctor.id}

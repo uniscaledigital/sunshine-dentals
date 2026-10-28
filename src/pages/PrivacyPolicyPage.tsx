@@ -4,8 +4,8 @@ import { clinicInfo } from '../config/clinicData';
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (
-    <div className="w-full max-w-[900px] mx-auto px-4 py-12 lg:py-16">
-      <div className="bg-white rounded-3xl p-6 sm:p-10 border border-surface-container shadow-md">
+    <div className="w-full max-w-[900px] mx-auto px-3 sm:px-4 py-8 sm:py-12 lg:py-16">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 border border-surface-container shadow-md">
         
         <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
           Patient Data & Privacy

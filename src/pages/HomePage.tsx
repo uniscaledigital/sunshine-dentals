@@ -9,7 +9,7 @@ export const HomePage: React.FC = () => {
     <div className="w-full flex flex-col gap-12 lg:gap-20">
       
       {/* 1. HERO SECTION (Matching Stitch Hero) */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 pt-8 lg:pt-14">
+      <section className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 pt-6 sm:pt-8 lg:pt-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Clinic Image */}
@@ -18,7 +18,7 @@ export const HomePage: React.FC = () => {
               <img
                 src="/images/stitch/stitch_img_3.jpg"
                 alt="Modern high-end dental operatory in Hanamkonda at Sunshine Dental"
-                className="w-full h-[400px] sm:h-[480px] lg:h-[540px] object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-[300px] sm:h-[400px] md:h-[480px] lg:h-[540px] object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
                 <span className="inline-flex items-center gap-1.5 bg-primary/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold w-fit mb-2">
@@ -39,7 +39,7 @@ export const HomePage: React.FC = () => {
               <span>Hanamkonda Central • Approved Lead Dental Clinic</span>
             </div>
 
-            <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface leading-[1.15]">
+            <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-on-surface leading-[1.15]">
               Advanced, Painless Dental Care in Hanamkonda
             </h1>
 
@@ -51,7 +51,7 @@ export const HomePage: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <Link
                 to="/book-appointment"
-                className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-container text-white px-8 py-4 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all transform active:scale-95"
+                className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-container text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all transform active:scale-95"
                 id="hero-book-btn"
               >
                 <span className="material-symbols-outlined text-[20px]">calendar_month</span>
@@ -59,7 +59,7 @@ export const HomePage: React.FC = () => {
               </Link>
               <a
                 href={`tel:${clinicInfo.phone}`}
-                className="flex items-center justify-center gap-2 bg-white hover:bg-surface-container-low text-on-surface border border-outline-variant px-6 py-4 rounded-xl font-bold text-base shadow-sm hover:shadow transition-all"
+                className="flex items-center justify-center gap-2 bg-white hover:bg-surface-container-low text-on-surface border border-outline-variant px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base shadow-sm hover:shadow transition-all"
                 id="hero-call-btn"
               >
                 <span className="material-symbols-outlined text-[20px] text-primary">call</span>
@@ -76,12 +76,12 @@ export const HomePage: React.FC = () => {
 
       {/* 2. MEET YOUR DENTAL CARE EXPERTS (Dr. Bhanuja & Dr. Madhuri) */}
       <section id="doctors-section" className="w-full bg-surface-container-low py-12 lg:py-16 border-y border-surface-container">
-        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
+        <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
               Leadership & Care
             </span>
-            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
+            <h2 className="font-headline text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
               Meet Your Dental Care Experts
             </h2>
             <p className="text-sm text-secondary mt-2">
@@ -89,7 +89,7 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 max-w-4xl mx-auto">
             {doctors.map((doctor) => (
               <div
                 key={doctor.id}
@@ -160,10 +160,10 @@ export const HomePage: React.FC = () => {
 
 
       {/* 4. CLINICAL SERVICES MATRIX */}
-      <section id="treatments-section" className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
+      <section id="treatments-section" className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface">
+            <h2 className="font-headline text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-on-surface">
               Dental Treatments & Services
             </h2>
           </div>
@@ -176,7 +176,7 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
           {services.map((service) => (
             <Link
               to="/treatments"
@@ -200,12 +200,12 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 5. INTERACTIVE BEFORE & AFTER SMILE TRANSFORMATIONS */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
+      <section className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
             Real Patient Results
           </span>
-          <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
+          <h2 className="font-headline text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-on-surface mt-3">
             Before & After Smile Transformations
           </h2>
         </div>
@@ -246,7 +246,7 @@ export const HomePage: React.FC = () => {
                 Patient Reviews
               </span>
             </div>
-            <h2 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-on-surface">
+            <h2 className="font-headline text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-on-surface">
               What Our Patients Say
             </h2>
             <p className="text-sm sm:text-base text-secondary mt-2.5 leading-relaxed">
@@ -255,7 +255,7 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* Authentic Google Review Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
             {googleReviews.map((review) => (
               <div
                 key={review.id}
@@ -339,14 +339,14 @@ export const HomePage: React.FC = () => {
 
       {/* 8. VISIT SUNSHINE DENTAL / MAP & LOCATION */}
       <section className="w-full bg-surface-container-low py-12 lg:py-16 border-t border-surface-container">
-        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
+        <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-6 flex flex-col gap-6">
               <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full w-fit">
                 Location & Accessibility
               </span>
-              <h2 className="font-headline text-2xl sm:text-3xl font-bold text-on-surface">
+              <h2 className="font-headline text-xl sm:text-2xl md:text-3xl font-bold text-on-surface">
                 Visit Sunshine Dental Clinic
               </h2>
               <p className="text-sm text-secondary leading-relaxed">
@@ -405,7 +405,7 @@ export const HomePage: React.FC = () => {
 
             {/* Map Frame */}
             <div className="lg:col-span-6">
-              <div className="w-full h-[360px] rounded-3xl overflow-hidden shadow-lg border-2 border-white bg-surface-container relative">
+              <div className="w-full h-[280px] sm:h-[320px] lg:h-[360px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-2 border-white bg-surface-container relative">
                 <iframe
                   title="Sunshine Dental Clinic Location Map"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.856956799042!2d79.559281!3d18.013715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334f59e99a8b11%3A0x6b4ef82ec35a901!2sHanamkonda%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
@@ -414,10 +414,10 @@ export const HomePage: React.FC = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3 rounded-xl border border-surface-container shadow-md flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-primary text-[20px]">pin_drop</span>
-                    <span className="text-xs font-bold text-on-surface">Sunshine Dental • Hanamkonda Central</span>
+                <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4 bg-white/95 backdrop-blur-md p-2.5 sm:p-3 rounded-xl border border-surface-container shadow-md flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                    <span className="material-symbols-outlined text-primary text-[18px] sm:text-[20px] shrink-0">pin_drop</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-on-surface truncate">Sunshine Dental • Hanamkonda Central</span>
                   </div>
                   <a
                     href={clinicInfo.mapUrl}

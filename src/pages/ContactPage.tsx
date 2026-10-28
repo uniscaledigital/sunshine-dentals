@@ -8,11 +8,11 @@ export const ContactPage: React.FC = () => {
       
       {/* Header */}
       <section className="bg-surface-container-low py-12 lg:py-16 border-b border-surface-container">
-        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 text-center max-w-3xl">
+        <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 text-center max-w-3xl">
           <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
             Get In Touch
           </span>
-          <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
+          <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
             Clinic Contact & Location
           </h1>
           <p className="text-base text-secondary mt-3 leading-relaxed">
@@ -22,7 +22,7 @@ export const ContactPage: React.FC = () => {
       </section>
 
       {/* Main Details and Map Grid */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 pb-12">
+      <section className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           
           {/* Left Details */}
@@ -122,7 +122,7 @@ export const ContactPage: React.FC = () => {
 
           {/* Right Map Frame */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <div className="w-full h-[520px] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-surface-container relative">
+            <div className="w-full h-[300px] sm:h-[400px] lg:h-[520px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-2 sm:border-4 border-white bg-surface-container relative">
               <iframe
                 title="Sunshine Dental Clinic Location Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.856956799042!2d79.559281!3d18.013715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334f59e99a8b11%3A0x6b4ef82ec35a901!2sHanamkonda%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
@@ -132,16 +132,16 @@ export const ContactPage: React.FC = () => {
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
 
-              <div className="absolute top-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-surface-container shadow-md flex items-center justify-between">
-                <div>
-                  <p className="font-headline font-bold text-sm text-on-surface">Sunshine Dental Clinic</p>
-                  <p className="text-xs text-secondary">Hanamkonda Central, Warangal Urban, Telangana</p>
+              <div className="absolute top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-surface-container shadow-md flex items-center justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="font-headline font-bold text-xs sm:text-sm text-on-surface truncate">Sunshine Dental Clinic</p>
+                  <p className="text-[10px] sm:text-xs text-secondary truncate">Hanamkonda Central, Warangal Urban, Telangana</p>
                 </div>
                 <a
                   href={clinicInfo.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-primary-container transition-all flex items-center gap-1"
+                  className="bg-primary text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-2 rounded-lg shadow-sm hover:bg-primary-container transition-all flex items-center gap-1 shrink-0"
                 >
                   <span className="material-symbols-outlined text-[16px]">navigation</span>
                   Route

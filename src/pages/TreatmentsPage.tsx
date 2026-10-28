@@ -15,22 +15,22 @@ export const TreatmentsPage: React.FC = () => {
       
       {/* Header */}
       <section className="bg-surface-container-low py-12 lg:py-16 border-b border-surface-container">
-        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 text-center max-w-3xl">
+        <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 text-center max-w-3xl">
           <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
             Clinical Matrix
           </span>
-          <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
+          <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
             Comprehensive Dental Treatments
           </h1>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+          <div className="flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 mt-6 sm:mt-8 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide -mx-3 px-3 sm:mx-0 sm:px-0">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`text-xs font-bold px-4 py-2 rounded-full transition-all ${
+                className={`text-xs font-bold px-4 py-2 rounded-full transition-all whitespace-nowrap shrink-0 ${
                   selectedCategory === cat
                     ? 'bg-primary text-white shadow-sm'
                     : 'bg-white text-secondary hover:bg-surface-container border border-surface-container'
@@ -44,8 +44,8 @@ export const TreatmentsPage: React.FC = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {filteredServices.map((service) => (
             <div
               key={service.id}

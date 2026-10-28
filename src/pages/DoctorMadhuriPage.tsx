@@ -11,10 +11,10 @@ export const DoctorMadhuriPage: React.FC = () => {
   );
 
   return (
-    <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 py-8 lg:py-12">
+    <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8 lg:py-12">
       
       {/* Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-secondary mb-6">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-secondary mb-4 sm:mb-6 flex-wrap">
         <Link to="/" className="hover:text-primary">Home</Link>
         <span className="material-symbols-outlined text-[14px]">chevron_right</span>
         <Link to="/doctors" className="hover:text-primary">Our Doctors</Link>
@@ -55,7 +55,7 @@ export const DoctorMadhuriPage: React.FC = () => {
           </div>
 
           <div>
-            <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-bold text-on-surface">
+            <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-on-surface">
               {doctor.name}
             </h1>
             <p className="text-sm sm:text-base font-semibold text-primary mt-1">
@@ -123,7 +123,7 @@ export const DoctorMadhuriPage: React.FC = () => {
 
         {/* Sidebar: Portrait & Direct Booking */}
         <div className="lg:col-span-5 flex flex-col gap-6">
-          <div className="rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-surface-container sticky top-28">
+          <div className="rounded-2xl sm:rounded-3xl overflow-hidden border-2 sm:border-4 border-white shadow-xl bg-surface-container lg:sticky lg:top-28">
             <div className="relative aspect-[4/5] overflow-hidden bg-surface-container-low">
               <img
                 src={doctor.image}

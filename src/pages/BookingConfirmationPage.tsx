@@ -24,8 +24,8 @@ export const BookingConfirmationPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-[800px] mx-auto px-4 py-12 lg:py-16">
-      <div className="bg-white rounded-3xl p-6 sm:p-10 border border-surface-container shadow-xl text-center">
+    <div className="w-full max-w-[800px] mx-auto px-3 sm:px-4 py-8 sm:py-12 lg:py-16">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 border border-surface-container shadow-xl text-center">
         
         {/* Success Icon */}
         <div className="w-20 h-20 rounded-full bg-green-100 text-green-700 mx-auto flex items-center justify-center mb-6 shadow-inner">

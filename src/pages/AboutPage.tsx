@@ -7,22 +7,22 @@ export const AboutPage: React.FC = () => {
     <div className="w-full flex flex-col gap-12 lg:gap-16">
       
       {/* Hero Header */}
-      <section className="bg-surface-container-low py-12 lg:py-16 border-b border-surface-container">
-        <div className="w-full max-w-[1280px] mx-auto px-4 lg:px-8 text-center max-w-3xl">
+      <section className="bg-surface-container-low py-8 sm:py-12 lg:py-16 border-b border-surface-container">
+        <div className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8 text-center max-w-3xl">
           <span className="text-xs font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">
             Our Mission & Philosophy
           </span>
-          <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
+          <h1 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-on-surface mt-3">
             Painless Modern Dentistry for Hanamkonda
           </h1>
-          <p className="text-base text-secondary mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-secondary mt-3 leading-relaxed">
             Sunshine Dental Clinic was established with a singular vision: to liberate dental care from fear and clinical gloom, replacing it with sterile perfection, warm hospitality, and gentle precision.
           </p>
         </div>
       </section>
 
       {/* Visual Identity & Clinical Standards */}
-      <section className="w-full max-w-[1280px] mx-auto px-4 lg:px-8">
+      <section className="w-full max-w-[1280px] mx-auto px-3 sm:px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-surface-container">
             <img
