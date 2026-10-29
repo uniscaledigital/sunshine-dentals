@@ -33,7 +33,7 @@ export const Navbar: React.FC = () => {
           Mon–Sat: 10 AM – 8:30 PM
         </span>
         <span className="hidden md:inline opacity-60">|</span>
-        <a href={`tel:${clinicInfo.phone}`} className="hidden md:flex items-center gap-1 font-semibold hover:underline">
+        <a href={`tel:${clinicInfo.phoneRaw || clinicInfo.phone.replace(/[^0-9+]/g, '')}`} className="hidden md:flex items-center gap-1 font-semibold hover:underline">
           <span className="material-symbols-outlined text-[16px]">call</span>
           {clinicInfo.phone}
         </a>
@@ -72,7 +72,7 @@ export const Navbar: React.FC = () => {
           {/* Action CTAs */}
           <div className="hidden sm:flex items-center gap-2 lg:gap-3">
             <a
-              href={`https://wa.me/${clinicInfo.whatsapp.replace('+', '')}?text=${encodeURIComponent('Hello Sunshine Dental, I would like to consult with a specialist.')}`}
+              href={`https://wa.me/${clinicInfo.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello Sunshine Dental, I would like to consult with a specialist.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden xl:flex items-center gap-1.5 text-xs font-bold text-[#075E54] bg-[#E8F5E9] px-3 py-2 rounded-lg hover:bg-[#C8E6C9] transition-all"
@@ -129,7 +129,7 @@ export const Navbar: React.FC = () => {
                 Book Appointment Online
               </Link>
               <a
-                href={`tel:${clinicInfo.phone}`}
+                href={`tel:${clinicInfo.phoneRaw || clinicInfo.phone.replace(/[^0-9+]/g, '')}`}
                 className="w-full text-center border border-primary text-primary py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-1.5 active:bg-primary/5 transition-colors"
               >
                 <span className="material-symbols-outlined text-[18px]">call</span>

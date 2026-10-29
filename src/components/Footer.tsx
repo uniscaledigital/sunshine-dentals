@@ -120,7 +120,7 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <a
-                  href={`tel:${clinicInfo.phone}`}
+                  href={`tel:${clinicInfo.phoneRaw || clinicInfo.phone.replace(/[^0-9+]/g, '')}`}
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:underline"
                 >
                   <span className="material-symbols-outlined text-[16px]">call</span>

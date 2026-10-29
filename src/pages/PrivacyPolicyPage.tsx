@@ -44,7 +44,7 @@ export const PrivacyPolicyPage: React.FC = () => {
           <div>
             <h2 className="font-headline font-bold text-base text-on-surface mb-2">4. Contact & Inquiries</h2>
             <p>
-              For questions regarding your medical data or to update your contact preferences, please reach out to our clinic coordinator at <a href={`tel:${clinicInfo.phone}`} className="text-primary font-bold hover:underline">{clinicInfo.phone}</a> or visit us directly at {clinicInfo.address}.
+              For questions regarding your medical data or to update your contact preferences, please reach out to our clinic coordinator at <a href={`tel:${clinicInfo.phoneRaw || clinicInfo.phone.replace(/[^0-9+]/g, '')}`} className="text-primary font-bold hover:underline">{clinicInfo.phone}</a> or visit us directly at {clinicInfo.address}.
             </p>
           </div>
         </div>

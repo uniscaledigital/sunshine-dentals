@@ -49,7 +49,7 @@ export const HomePage: React.FC = () => {
                 Book Appointment Online
               </Link>
               <a
-                href={`tel:${clinicInfo.phone}`}
+                href={`tel:${clinicInfo.phoneRaw || clinicInfo.phone.replace(/[^0-9+]/g, '')}`}
                 className="flex items-center justify-center gap-2 bg-white hover:bg-surface-container-low text-on-surface border border-outline-variant px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base shadow-sm hover:shadow transition-all"
                 id="hero-call-btn"
               >
@@ -377,7 +377,7 @@ export const HomePage: React.FC = () => {
                   <div>
                     <p className="font-bold text-on-surface">Primary Contact Channels</p>
                     <p className="text-xs text-secondary">Direct Line: {clinicInfo.phone}</p>
-                    <p className="text-xs text-secondary">Official WhatsApp: {clinicInfo.whatsapp}</p>
+                    <p className="text-xs text-secondary">Official WhatsApp: {clinicInfo.whatsappFormatted || clinicInfo.phone}</p>
                   </div>
                 </div>
               </div>
@@ -394,7 +394,7 @@ export const HomePage: React.FC = () => {
                   Get Directions
                 </a>
                 <a
-                  href={`tel:${clinicInfo.phone}`}
+                  href={`tel:${clinicInfo.phoneRaw || clinicInfo.phone.replace(/[^0-9+]/g, '')}`}
                   className="inline-flex items-center gap-2 bg-white text-on-surface border border-outline-variant px-5 py-3 rounded-xl font-bold text-xs hover:bg-surface-container transition-colors"
                 >
                   <span className="material-symbols-outlined text-[18px] text-primary">call</span>

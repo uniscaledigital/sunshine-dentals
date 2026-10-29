@@ -2,7 +2,7 @@ import React from 'react';
 import { clinicInfo } from '../config/clinicData';
 
 export const FloatingWhatsApp: React.FC = () => {
-  const whatsappUrl = `https://wa.me/${clinicInfo.whatsapp.replace('+', '')}?text=${encodeURIComponent('Hello Sunshine Dental Clinic, I would like to consult with a doctor.')}`;
+  const whatsappUrl = `https://wa.me/${clinicInfo.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello Sunshine Dental Clinic, I would like to consult with a doctor.')}`;
 
   return (
     <aside aria-label="Quick contact" className="hidden md:block fixed bottom-6 right-6 z-40">

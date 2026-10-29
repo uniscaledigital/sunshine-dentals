@@ -71,7 +71,7 @@ export const ContactPage: React.FC = () => {
                   <div>
                     <h3 className="font-bold text-sm text-on-surface">Phone & Emergency</h3>
                     <p className="text-xs text-secondary mt-1">
-                      Direct Front Desk: <a href={`tel:${clinicInfo.phone}`} className="text-primary font-bold hover:underline">{clinicInfo.phone}</a>
+                      Direct Front Desk: <a href={`tel:${clinicInfo.phoneRaw || clinicInfo.phone.replace(/[^0-9+]/g, '')}`} className="text-primary font-bold hover:underline">{clinicInfo.phone}</a>
                     </p>
                     <p className="text-xs text-secondary mt-1">
                       {clinicInfo.timings.emergency}
@@ -89,12 +89,12 @@ export const ContactPage: React.FC = () => {
                       Instant chat routing for reports and appointment requests.
                     </p>
                     <a
-                      href={`https://wa.me/${clinicInfo.whatsapp.replace('+', '')}?text=${encodeURIComponent('Hello Sunshine Dental Clinic')}`}
+                      href={`https://wa.me/${clinicInfo.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello Sunshine Dental Clinic')}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-xs font-bold text-green-700 hover:underline mt-1"
                     >
-                      <span>Chat on WhatsApp ({clinicInfo.whatsapp})</span>
+                      <span>Chat on WhatsApp ({clinicInfo.whatsappFormatted || clinicInfo.phone})</span>
                       <span className="material-symbols-outlined text-[14px]">open_in_new</span>
                     </a>
                   </div>
